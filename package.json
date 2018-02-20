@@ -1,0 +1,24 @@
+{
+  "name": "react-focus-on",
+  "version": "0.0.0-beta.1",
+  "description": "Clear you mind. Concentrate on the task.",
+  "author": "Anton Korzunov (thekashey@gmail.com)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "pasition": "^1.0.1",
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "react": "^16.2.0",
+    "storybook": "^1.0.0",
+    "@storybook/react": "^3.3.9",
+    "@storybook/addon-actions": "^3.3.9",
+    "@storybook/addon-links": "^3.3.9"
+  }
+}
