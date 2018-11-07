@@ -9,6 +9,7 @@ export interface ReactFocusOnProps {
   autoFocus?: boolean;
   onActivation?: (node: HTMLElement) => void;
   onDeactivation?: () => void;
+  onClickOutside?: () => void;
 }
 
 export class ReactFocusOn extends Component<ReactFocusOnProps> {
@@ -31,10 +32,11 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
   };
 
   render() {
-    const {children, autoFocus, enabled = true} = this.props;
+    const {children, autoFocus, onClickOutside, enabled = true} = this.props;
     return (
       <ScrollLocky
         enabled={enabled}
+        onEscape={onClickOutside}
       >
         <ReactFocusLock
           autoFocus={autoFocus}
