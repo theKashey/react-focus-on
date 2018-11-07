@@ -1,6 +1,6 @@
 {
   "name": "react-focus-on",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The final solution for WAI ARIA compatible modal dialogs or full-screen tasks.",
   "main": "dist/es5/index.js",
   "scripts": {
@@ -37,6 +37,12 @@
   "files": [
     "dist"
   ],
-  "keywords": ["react", "modal", "focus-management", "scroll", "isolation"],
+  "keywords": [
+    "react",
+    "modal",
+    "focus-management",
+    "scroll",
+    "isolation"
+  ],
   "homepage": "https://github.com/theKashey/react-focus-on#readme"
 }
