@@ -9,7 +9,9 @@ export interface ReactFocusOnProps {
   autoFocus?: boolean;
   onActivation?: (node: HTMLElement) => void;
   onDeactivation?: () => void;
+
   onClickOutside?: () => void;
+  onEscapeKey?: (event: Event) => void;
 }
 
 export class ReactFocusOn extends Component<ReactFocusOnProps> {
@@ -21,13 +23,25 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
     if (onActivation) {
       onActivation(node);
     }
+    node.addEventListener('keyup', this.onKeyPress);
   };
 
-  onDeactivation = () => {
+  onDeactivation = (node: HTMLElement) => {
     this._undo!();
     const {onDeactivation} = this.props;
     if (onDeactivation) {
       onDeactivation();
+    }
+    node.removeEventListener('keyup', this.onKeyPress);
+  };
+
+  onKeyPress = (event: KeyboardEvent) => {
+    if (event.defaultPrevented) {
+      return;
+    }
+    const code = event.key || event.keyCode;
+    if ((event.code === 'Escape' || code === 27) && this.props.onEscapeKey) {
+      this.props.onEscapeKey(event);
     }
   };
 

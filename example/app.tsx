@@ -14,6 +14,8 @@ export default class App extends Component <{}, AppState> {
     enabled: false
   };
 
+  toggle = () => this.setState({enabled: !this.state.enabled});
+
   render() {
     return (
       <AppWrapper>
@@ -21,11 +23,15 @@ export default class App extends Component <{}, AppState> {
           <GHCorner openInNewTab href={repoUrl}/>
           <button>outside</button>
           outside
-          <FocusOn enabled={this.state.enabled}>
+          <FocusOn
+            enabled={this.state.enabled}
+            onClickOutside={this.toggle}
+            onEscapeKey={this.toggle}
+          >
             inside
             <button>inside</button>
 
-            <button onClick={() => this.setState({enabled: !this.state.enabled})}>toggle</button>
+            <button onClick={this.toggle}>toggle</button>
             <MoveFocusInside key={`k-${this.state.enabled}`}>
               <button>inside</button>
             </MoveFocusInside>
@@ -34,8 +40,11 @@ export default class App extends Component <{}, AppState> {
           <button>outside</button>
           Example!
           {
-            Array(100).fill(1).map((_, x) => <div key={`k${x}`}>{Array(100).fill(1).map((_, x) => <span
-              key={`k${x}`}> *{x}</span>}</div>)
+            Array(100).fill(1).map((_, x) =>
+              <div key={`k${x}`}>
+                {Array(100).fill(1).map((_, x) => <span key={`k${x}`}> *{x}</span>)}
+              </div>
+            )
           }
         </FocusPane>
       </AppWrapper>

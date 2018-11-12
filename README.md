@@ -19,6 +19,7 @@ Now you could __focus on__ a single task.
  - `[onActivation]` - on activation callback
  - `[onDeactivation]` - on deactivation callback
  - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
+ - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
  
 ## Additional API
 ### Exposed from React-Focus-Lock
