@@ -9,6 +9,7 @@
     "dev": "ts-react-toolbox dev",
     "test:ci": "ts-react-toolbox test --runInBand --coverage",
     "build": "ts-react-toolbox build",
+    "prepublish": "yarn build",
     "release": "ts-react-toolbox release",
     "lint": "ts-react-toolbox lint",
     "static": "ts-react-toolbox publish",
