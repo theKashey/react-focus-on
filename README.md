@@ -20,6 +20,7 @@ Now you could __focus on__ a single task.
  - `[onDeactivation]` - on deactivation callback
  - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
  - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
+ - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
  
 ## Additional API
 ### Exposed from React-Focus-Lock

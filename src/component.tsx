@@ -4,11 +4,15 @@ import {ScrollLocky} from 'react-scroll-locky';
 import ReactFocusLock from 'react-focus-lock'
 import {hideOthers} from 'aria-hidden';
 
+type GapMode = 'padding' | 'margin';
+
 export interface ReactFocusOnProps {
   enabled?: boolean;
   autoFocus?: boolean;
   onActivation?: (node: HTMLElement) => void;
   onDeactivation?: () => void;
+
+  gapMode?: GapMode;
 
   onClickOutside?: () => void;
   onEscapeKey?: (event: Event) => void;
@@ -46,11 +50,12 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
   };
 
   render() {
-    const {children, autoFocus, onClickOutside, enabled = true} = this.props;
+    const {children, autoFocus, onClickOutside, gapMode, enabled = true} = this.props;
     return (
       <ScrollLocky
         enabled={enabled}
         onEscape={onClickOutside}
+        gapMode={gapMode}
       >
         <ReactFocusLock
           autoFocus={autoFocus}
