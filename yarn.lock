@@ -18,6 +18,13 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@babel/runtime@^7.1.5":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
+  integrity sha512-oouEibCbHMVdZSDlJBO6bZmID/zA/G/Qx3H1d3rSNPTD+L8UNKvCat7aKWSJ74zYbm5zWGh0GQN0hKj8zYFTCg==
+  dependencies:
+    regenerator-runtime "^0.12.0"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -110,11 +117,6 @@
   dependencies:
     "@types/events" "*"
     "@types/node" "*"
-
-"@types/invariant@^2.2.29":
-  version "2.2.29"
-  resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.29.tgz#aa845204cd0a289f65d47e0de63a6a815e30cc66"
-  integrity sha512-lRVw09gOvgviOfeUrKc/pmTiRZ7g7oDOU6OAutyuSHpm1/o2RaBQvRhgK8QEdu+FFuw/wnWb29A/iuxv9i8OpQ==
 
 "@types/jest@^23.3.1":
   version "23.3.7"
@@ -7244,28 +7246,30 @@ react-is@^16.3.1, react-is@^16.5.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
   integrity sha512-hSl7E6l25GTjNEZATqZIuWOgSnpXb3kD0DVCujmg46K5zLxsbiKaaT6VO9slkSBDPZfYs30lwfJwbOFOnoEnKQ==
 
-react-locky@^1.4.4:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/react-locky/-/react-locky-1.4.5.tgz#95a4ed9af3d512884b822c3fe436172b84b8a83b"
-  integrity sha512-KMSwp+2ennH2mdc4ZutgAeMwuxUYNj7BxzKfZwRA5E0CXN7U6PPs/0CkgqT29YvjkUSd7BAZA0WMFedRkvz6MQ==
+react-locky@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/react-locky/-/react-locky-1.5.2.tgz#ad725f3402c22996be3eeccedf04a10360689877"
+  integrity sha512-VMUFzSWAfDEPLHr5ubqPVQixaEQNsfRPGM5RdZAPJkgFTr2N7zAvsHtdFLrBKgUjG2SdxX4D9mPno1Jpbksp2Q==
   dependencies:
+    "@babel/runtime" "^7.1.5"
     prop-types "15.6.2"
 
-react-scroll-locky@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/react-scroll-locky/-/react-scroll-locky-1.1.5.tgz#bcfed6b9ea2a2d85681e146f67087f30aa97bcb0"
-  integrity sha512-rJm/MwwIsyrcoFLw0DeWqLncYZsnJ/6D58v7HtD4WrKJjLYp/FofhkJHx3crRMY50nAKFZIyW035oy1GQtjCsQ==
+react-scroll-locky@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-scroll-locky/-/react-scroll-locky-1.4.0.tgz#99b03cd25298013cf8b5ac92a37a09f922fda897"
+  integrity sha512-WyE0lA0kIBiYBxnx7rvmwiiGB1SveT8fK8qowNWeVGm1zT72Nnwa1VXSQNtAhYHqZ8DcxpxhyitLs5aFRbZSPw==
   dependencies:
-    react-locky "^1.4.4"
-    react-style-singleton "^1.0.1"
+    react-locky "^1.5.2"
+    react-style-singleton "^1.1.0"
+    tslib "^1.0.0"
 
-react-style-singleton@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-1.0.1.tgz#8de026b506d62b006b7f1d821d3ea3a91f794c3e"
-  integrity sha512-dBtQ273WFymYEbJkDQXSovYcwgbVNUBHfMgk45hO/oroLr2ZSmSJlsBlnlWoP0aZyfQNo91cHBSEziCD60BkIw==
+react-style-singleton@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-1.1.0.tgz#ca2a40cc5bb3c513900141af34019cb80b7c656c"
+  integrity sha512-wYboNTnY74iFYo3uTZzEzdbnpka7Q3mhKiY4q5nwJaiQQig7snn6S6VCgBBVCu1B8LaHslwTLOWCMOLEwjNGXQ==
   dependencies:
-    "@types/invariant" "^2.2.29"
     invariant "^2.2.4"
+    tslib "^1.0.0"
 
 react-test-renderer@^16.0.0-0:
   version "16.5.2"
@@ -7421,6 +7425,11 @@ regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
+
+regenerator-runtime@^0.12.0:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
+  integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
 regenerator-transform@^0.10.0:
   version "0.10.1"
@@ -8608,7 +8617,7 @@ ts-react-toolbox@^0.1.22:
     webpack-cli "^2.1.3"
     webpack-dev-server "^3.1.1"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.0.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==

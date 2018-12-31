@@ -25,13 +25,13 @@ export default class App extends Component <{}, AppState> {
           outside
           <FocusOn
             enabled={this.state.enabled}
-            onClickOutside={this.toggle}
+           // onClickOutside={this.toggle}
             onEscapeKey={this.toggle}
           >
             inside
             <button>inside</button>
 
-            <button onClick={this.toggle}>toggle</button>
+            <button onClick={this.toggle}>{this.state.enabled ? 'disable' : 'enable'}</button>
             <MoveFocusInside key={`k-${this.state.enabled}`}>
               <button>inside</button>
             </MoveFocusInside>

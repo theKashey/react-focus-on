@@ -28,6 +28,7 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
       onActivation(node);
     }
     node.addEventListener('keyup', this.onKeyPress);
+    document.body.addEventListener('keyup', this.onKeyPress);
   };
 
   onDeactivation = (node: HTMLElement) => {
@@ -37,6 +38,7 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
       onDeactivation();
     }
     node.removeEventListener('keyup', this.onKeyPress);
+    document.body.removeEventListener('keyup', this.onKeyPress);
   };
 
   onKeyPress = (event: KeyboardEvent) => {
@@ -50,7 +52,7 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
   };
 
   render() {
-    const {children, autoFocus, onClickOutside, gapMode, enabled = true} = this.props;
+    const {children, autoFocus, gapMode, onClickOutside, enabled = true} = this.props;
     return (
       <ScrollLocky
         enabled={enabled}
