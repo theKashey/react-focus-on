@@ -60,6 +60,7 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
         gapMode={gapMode}
       >
         <ReactFocusLock
+          returnFocus
           autoFocus={autoFocus}
           onActivation={this.onActivation}
           onDeactivation={this.onDeactivation}
