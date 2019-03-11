@@ -13,6 +13,20 @@ Works on any browser and any platform. Roughly `5kb`, excluding babel-runtime an
 
 > This is basically `inert` 
 
+## Example
+Code sandbox example - https://codesandbox.io/s/p3vjp8mzw7
+```js
+import {FocusOn} from 'react-focus-on';
+
+<FocusOn
+ onClickOutside={callback}
+ onEscapeKey={callback}
+ shards={[externalRef]}
+>
+ content you should be "focused" on
+</FocusOn>
+```
+
 # API
 ### FocusOn
 `FocusOn` - the focus on component

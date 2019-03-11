@@ -14,11 +14,13 @@
     "lint": "ts-react-toolbox lint",
     "static": "ts-react-toolbox publish",
     "format": "ts-react-toolbox format",
-    "analyze": "ts-react-toolbox analyze"
+    "analyze": "ts-react-toolbox analyze",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "author": "Anton Korzunov <thekashey@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "conventional-changelog-cli": "^2.0.12",
     "react-powerplug": "^1.0.0",
     "size-limit": "^0.21.1",
     "ts-react-toolbox": "^0.1.22"
