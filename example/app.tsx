@@ -1,12 +1,27 @@
 import * as React from 'react';
 import {Component} from 'react';
 import {GHCorner} from 'react-gh-corner';
+import {Toggle} from 'react-powerplug';
 import {AppWrapper} from './styled';
-import {FocusOn, FocusPane, AutoFocusInside, MoveFocusInside} from "../src";
+import {FocusOn, AutoFocusInside, MoveFocusInside, InFocusGuard, classNames} from "../src";
 
 export interface AppState {
   enabled: boolean;
 }
+
+const FocusPane = ({children}) => <div className={classNames.fullWidth}>{children}</div>;
+
+const ScrollBox = React.forwardRef(({children}, ref: any) => (
+  <div ref={ref} style={{overflow: 'scroll', height: '200px', width: '300px', backgroundColor: 'rgba(0,0,0,0.3)'}}>
+    <button>{children}</button>
+    <ul>
+      {Array(100).fill(1).map((_, index) => <li>{index}</li>)}
+    </ul>
+    <InFocusGuard>
+      <button>{children}</button>
+    </InFocusGuard>
+  </div>
+));
 
 const repoUrl = 'https://github.com/zzarcon/';
 export default class App extends Component <{}, AppState> {
@@ -14,40 +29,67 @@ export default class App extends Component <{}, AppState> {
     enabled: false
   };
 
+  toggleRef = React.createRef<any>();
+  scrollRef = React.createRef<any>()
+
   toggle = () => this.setState({enabled: !this.state.enabled});
 
   render() {
     return (
-      <AppWrapper>
-        <FocusPane>
-          <GHCorner openInNewTab href={repoUrl}/>
-          <button>outside</button>
-          outside
-          <FocusOn
-            enabled={this.state.enabled}
-           // onClickOutside={this.toggle}
-            onEscapeKey={this.toggle}
-          >
-            inside
-            <button>inside</button>
+      <Toggle>
+        {({on, toggle}) => (
+          <AppWrapper>
+            <FocusPane>
+              <GHCorner openInNewTab href={repoUrl}/>
+              <button>outside</button>
+              outside
 
-            <button onClick={this.toggle}>{this.state.enabled ? 'disable' : 'enable'}</button>
-            <MoveFocusInside key={`k-${this.state.enabled}`}>
-              <button>inside</button>
-            </MoveFocusInside>
-            <button>inside</button>
-          </FocusOn>
-          <button>outside</button>
-          Example!
-          {
-            Array(100).fill(1).map((_, x) =>
-              <div key={`k${x}`}>
-                {Array(100).fill(1).map((_, x) => <span key={`k${x}`}> *{x}</span>)}
-              </div>
-            )
-          }
-        </FocusPane>
-      </AppWrapper>
+              <button onClick={toggle} ref={this.toggleRef}>toggle drop</button>
+              <button onClick={toggle}>toggle drop 2</button>
+              {on && <div style={{backgroundColor: '#EEE'}}>
+                <FocusOn
+                  scrollLock={true}
+                  onClickOutside={toggle}
+                  onEscapeKey={toggle}
+                  shards={[this.toggleRef, this.scrollRef]}
+                >
+                  Holala!!
+                  <button onClick={toggle}>close</button>
+                  <ScrollBox>innerbox</ScrollBox>
+                </FocusOn>
+              </div>}
+
+
+              <ScrollBox ref={this.scrollRef}>outer box</ScrollBox>
+
+
+              <FocusOn
+                enabled={this.state.enabled}
+                // onClickOutside={this.toggle}
+                onEscapeKey={this.toggle}
+              >
+                inside
+                <button>inside</button>
+
+                <button onClick={this.toggle}>{this.state.enabled ? 'disable' : 'enable'}</button>
+                <MoveFocusInside key={`k-${this.state.enabled}`}>
+                  <button>inside</button>
+                </MoveFocusInside>
+                <button>inside</button>
+              </FocusOn>
+              <button>outside</button>
+              Example!
+              {
+                Array(100).fill(1).map((_, x) =>
+                  <div key={`k${x}`}>
+                    {Array(10).fill(1).map((_, x) => <span key={`k${x}`}> *{x}</span>)}
+                  </div>
+                )
+              }
+            </FocusPane>
+          </AppWrapper>
+        )}
+      </Toggle>
     )
   }
 }

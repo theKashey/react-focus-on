@@ -19,13 +19,14 @@
   "author": "Anton Korzunov <thekashey@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "react-powerplug": "^1.0.0",
     "size-limit": "^0.21.1",
     "ts-react-toolbox": "^0.1.22"
   },
   "dependencies": {
-    "aria-hidden": "^1.0.0",
-    "react-focus-lock": "^1.17.6",
-    "react-scroll-locky": "^1.4.0"
+    "aria-hidden": "^1.1.1",
+    "react-focus-lock": "^1.18.2",
+    "react-remove-scroll": "^1.0.5"
   },
   "engines": {
     "node": ">=8.5.0"

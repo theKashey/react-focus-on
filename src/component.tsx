@@ -1,74 +1,112 @@
 import * as React from 'react';
 import {Component} from 'react';
-import {ScrollLocky} from 'react-scroll-locky';
+import {RemoveScroll} from 'react-remove-scroll';
 import ReactFocusLock from 'react-focus-lock'
 import {hideOthers} from 'aria-hidden';
-
-type GapMode = 'padding' | 'margin';
+import {focusHiddenMarker, InteractivityDisabler} from "./InteractivityDisabler";
 
 export interface ReactFocusOnProps {
   enabled?: boolean;
+  scrollLock?: boolean;
+  focusLock?: boolean;
+
   autoFocus?: boolean;
   onActivation?: (node: HTMLElement) => void;
   onDeactivation?: () => void;
 
-  gapMode?: GapMode;
-
   onClickOutside?: () => void;
   onEscapeKey?: (event: Event) => void;
+
+  noIsolation?: boolean;
+
+  shards?: Array<React.RefObject<any> | HTMLElement>;
 }
+
+const extractRef = (ref: React.RefObject<any> | HTMLElement): HTMLElement => (
+  ('current' in ref) ? ref.current : ref
+);
 
 export class ReactFocusOn extends Component<ReactFocusOnProps> {
   private _undo?: () => void;
 
-  onActivation = (node: HTMLElement) => {
-    this._undo = hideOthers(node);
+  private lockProps = {
+    onClick: (e: React.MouseEvent) => e.preventDefault(),
+  };
+
+  private onActivation = (node: HTMLElement) => {
+    this._undo = hideOthers(
+      [node, ...(this.props.shards || []).map(extractRef)],
+      document.body,
+      this.props.noIsolation ? undefined : focusHiddenMarker
+    );
     const {onActivation} = this.props;
     if (onActivation) {
       onActivation(node);
     }
-    node.addEventListener('keyup', this.onKeyPress);
-    document.body.addEventListener('keyup', this.onKeyPress);
+    document.addEventListener('keyup', this.onKeyPress);
+    document.addEventListener('click', this.onClick);
   };
 
-  onDeactivation = (node: HTMLElement) => {
+  private onDeactivation = (node: HTMLElement) => {
     this._undo!();
     const {onDeactivation} = this.props;
     if (onDeactivation) {
       onDeactivation();
     }
-    node.removeEventListener('keyup', this.onKeyPress);
-    document.body.removeEventListener('keyup', this.onKeyPress);
+    document.removeEventListener('keyup', this.onKeyPress);
+    document.removeEventListener('click', this.onClick);
   };
 
-  onKeyPress = (event: KeyboardEvent) => {
+  private onKeyPress = (event: KeyboardEvent) => {
     if (event.defaultPrevented) {
       return;
     }
     const code = event.key || event.keyCode;
-    if ((event.code === 'Escape' || code === 27) && this.props.onEscapeKey) {
+    if ((event.code === 'Escape' || code === 'Escape' || code === 27) && this.props.onEscapeKey) {
       this.props.onEscapeKey(event);
     }
   };
 
+  private onClick = (event: MouseEvent) => {
+    const {shards = [], onClickOutside} = this.props;
+    if (event.defaultPrevented) {
+      return;
+    }
+    if (
+      shards
+        .map(extractRef)
+        .some(node => node && node.contains(event.target as any) || node === event.target)
+    ) {
+      return;
+    }
+    if (onClickOutside) {
+      onClickOutside();
+    }
+  };
+
   render() {
-    const {children, autoFocus, gapMode, onClickOutside, enabled = true} = this.props;
+    const {children, autoFocus, shards, enabled = true, scrollLock = true, focusLock = true} = this.props;
     return (
-      <ScrollLocky
-        enabled={enabled}
-        onEscape={onClickOutside}
-        gapMode={gapMode}
-      >
-        <ReactFocusLock
-          returnFocus
-          autoFocus={autoFocus}
-          onActivation={this.onActivation}
-          onDeactivation={this.onDeactivation}
-          disabled={!enabled}
+      <>
+        <RemoveScroll
+          enabled={enabled && scrollLock}
+          shards={shards}
         >
-          {children}
-        </ReactFocusLock>
-      </ScrollLocky>
+          <InteractivityDisabler/>
+          <ReactFocusLock
+            returnFocus
+            autoFocus={autoFocus}
+            onActivation={this.onActivation}
+            onDeactivation={this.onDeactivation}
+            disabled={!(enabled && focusLock)}
+            shards={shards}
+
+            lockProps={this.lockProps}
+          >
+            {children}
+          </ReactFocusLock>
+        </RemoveScroll>
+      </>
     );
   }
 }

@@ -23,15 +23,24 @@ Works on any browser and any platform. Roughly `5kb`, excluding babel-runtime an
  - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
  - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
  - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
+ - `[noIsolation]` - disables pointer event isolation
+ - `[shards]` - a list of Refs to be considered as a part of locks.
  
 ## Additional API
 ### Exposed from React-Focus-Lock
  - `AutoFocusInside` - to mark autofocusable element
  - `MoveFocusInside` - to move focus inside or a component mount
+ - `InFocusGuard` - to "guard" shard node.
  
-### Exposed from React-Scroll-Locky
- - `FocusPane` - to create a container with proper dimensions (it's more about right coordinate) set.  
-     
+See [react-focus-lock](https://github.com/theKashey/react-focus-lock) for details.
+ 
+### Exposed from React-Remove-Scroll
+ - `classNames.fullWidth` - "100%" width (will not change on scrollbar removal)
+ - `classNames.zeroRight` - "0" right (will not change on scrollbar removal)
+  
+See [React-Remove-Scroll](https://github.com/theKashey/react-remove-scroll) for details.
+
+> PS: Version 1 used React-scroll-locky which was replaced by remove-scroll.  
   
 # Licence
  MIT

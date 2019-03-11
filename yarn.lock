@@ -18,7 +18,7 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.5":
+"@babel/runtime@^7.0.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
   integrity sha512-oouEibCbHMVdZSDlJBO6bZmID/zA/G/Qx3H1d3rSNPTD+L8UNKvCat7aKWSJ74zYbm5zWGh0GQN0hKj8zYFTCg==
@@ -687,10 +687,12 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-aria-hidden@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/aria-hidden/-/aria-hidden-1.0.0.tgz#cdaa340a5b59cf418d345b802e08f0bbb65472d1"
-  integrity sha512-ymrp2YffmX+JYZpMONvl15nwlDoCHh9JCyxLFZrY76WAzMFcHC/NKatgdY1yMUhC0rwMtJDEXoyUrDQsTPULhA==
+aria-hidden@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/aria-hidden/-/aria-hidden-1.1.1.tgz#0c356026d3f65e2bd487a3adb73f0c586be2c37e"
+  integrity sha512-M7zYxCcOQPOaxGHoMTKUFD2UNcVFTp9ycrdStLcTPLf8zgTXC3+YcGe+UuzSh5X1BX/0/PtS8xTNy4xyH/6xtw==
+  dependencies:
+    tslib "^1.0.0"
 
 aria-query@^3.0.0:
   version "3.0.0"
@@ -4123,10 +4125,10 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-focus-lock@^0.5.2:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.5.3.tgz#bf415da0dfa5f938674485eef36a1958250ce7d2"
-  integrity sha512-WtA68g+R1eiJ3X55DuicccBSar0FM5eXqdZaemL4wtf6OxrNH9yrrQRUWG+cuvV039gNQJVnIKtMeC470MURqw==
+focus-lock@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.6.1.tgz#904d8d4d3a309e108d57b3a0f417c31b7f16bf24"
+  integrity sha512-q8DoDxBAjeMbrR61CJEvbpLZXgBhF9sNQOSiPigw0QFlZxQGDmGt0maayFkSZhOIFo4chq8kyxrFc4kNhLBfWw==
 
 follow-redirects@^1.0.0:
   version "1.5.9"
@@ -8011,7 +8013,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@15.6.2, prop-types@^15.5.4, prop-types@^15.6.2:
+prop-types@^15.5.4, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -8228,13 +8230,13 @@ react-dom@^16.2.0:
     prop-types "^15.6.2"
     schedule "^0.5.0"
 
-react-focus-lock@^1.17.6:
-  version "1.17.6"
-  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-1.17.6.tgz#dd87cff63bedc755a846fb3d16f57ee7449ac7ad"
-  integrity sha512-fSmSpiY2vmiaC+UMGpt0oFwtvStQ3gSaTeDXtQLiN1UmkWGUsEB+AX0KypYGP3uW+OnW8XapTGzRKgQZLksztA==
+react-focus-lock@^1.18.2:
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-1.18.2.tgz#1d8d3c0e352e99e26104932483087f2e0fc91f2c"
+  integrity sha512-YUZZ7M7iURY7IP/6qbrjhEsHKYqUZukXBaSeRXSHblnPKqNxAstNzrfeOVxXhoWCen7Mqx23mXWGZgVjNbivpA==
   dependencies:
     "@babel/runtime" "^7.0.0"
-    focus-lock "^0.5.2"
+    focus-lock "^0.6.0"
     prop-types "^15.6.2"
     react-clientside-effect "^1.2.0"
 
@@ -8248,27 +8250,32 @@ react-is@^16.3.1, react-is@^16.5.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
   integrity sha512-hSl7E6l25GTjNEZATqZIuWOgSnpXb3kD0DVCujmg46K5zLxsbiKaaT6VO9slkSBDPZfYs30lwfJwbOFOnoEnKQ==
 
-react-locky@^1.5.2:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/react-locky/-/react-locky-1.5.3.tgz#1cd9c38c1903fb9175f4ed018449eaa032a721e6"
-  integrity sha512-tg25JqgQu/bmT8YBUJUSd3/khoAoeC+RzS6umTXcXDKEo+x+JwBQRdjG/cg22gfs4DrKCQGkwLPX2kYvIk9EhQ==
+react-powerplug@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-powerplug/-/react-powerplug-1.0.0.tgz#f9c10a761ece115661b8fd10920c4e573ea95909"
+  integrity sha512-H7U+1sNiOqlaPgZpfciVZ3BMHtXHsd0tkXrOmrwV7ZTpK+YGRddK7+Um1RT2OTe+4G+1muXfyFMAwcnasABMtA==
   dependencies:
-    "@babel/runtime" "^7.1.5"
-    prop-types "15.6.2"
+    "@babel/runtime" "^7.0.0"
 
-react-scroll-locky@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-scroll-locky/-/react-scroll-locky-1.4.0.tgz#99b03cd25298013cf8b5ac92a37a09f922fda897"
-  integrity sha512-WyE0lA0kIBiYBxnx7rvmwiiGB1SveT8fK8qowNWeVGm1zT72Nnwa1VXSQNtAhYHqZ8DcxpxhyitLs5aFRbZSPw==
+react-remove-scroll-bar@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-1.1.3.tgz#21eb49a0cc9628746d2b624880fb272a3541866a"
+  integrity sha512-mEPbImnGIxv+PyVTpeuGhWVl2aAQgSpB2yX4lL6ttsjT/XVVZwyPiz4gnCxBPoWYniQBLTL1IjZ/rrQLT9ZIJg==
   dependencies:
-    react-locky "^1.5.2"
     react-style-singleton "^1.1.0"
+
+react-remove-scroll@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-1.0.5.tgz#d34d2c799a079ab19a0a2625dd2165e46824ee29"
+  integrity sha512-FXFyYZCU5zxcYf+CVx+4MTRmOXkCcOFgF636GhO/aTIi2wZConpdI327mc1Iozzfq2l7Nh04m2a9lOu7BtjQiQ==
+  dependencies:
+    react-remove-scroll-bar "^1.1.3"
     tslib "^1.0.0"
 
 react-style-singleton@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-1.1.0.tgz#ca2a40cc5bb3c513900141af34019cb80b7c656c"
-  integrity sha512-wYboNTnY74iFYo3uTZzEzdbnpka7Q3mhKiY4q5nwJaiQQig7snn6S6VCgBBVCu1B8LaHslwTLOWCMOLEwjNGXQ==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-1.1.1.tgz#b2b698765519da812b80f55ab3c5fc5d849a2e63"
+  integrity sha512-0JD+XC5veR3oxf7GzIXipr89sM8R3rWnOR/gpzIV0DnoRBrcTvvkqyMu9icDYqM/6CWJhYcH5Jdy6Nim7PmoTQ==
   dependencies:
     invariant "^2.2.4"
     tslib "^1.0.0"
