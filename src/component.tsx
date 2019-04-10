@@ -28,9 +28,10 @@ const extractRef = (ref: React.RefObject<any> | HTMLElement): HTMLElement => (
 
 export class ReactFocusOn extends Component<ReactFocusOnProps> {
   private _undo?: () => void;
+  private lastEventTarget?: EventTarget;
 
   private lockProps = {
-    onClick: (e: React.MouseEvent) => e.preventDefault(),
+    onClick: (e: React.MouseEvent) => this.lastEventTarget = e.target
   };
 
   private onActivation = (node: HTMLElement) => {
@@ -47,7 +48,7 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
     document.addEventListener('click', this.onClick);
   };
 
-  private onDeactivation = (node: HTMLElement) => {
+  private onDeactivation = () => {
     this._undo!();
     const {onDeactivation} = this.props;
     if (onDeactivation) {
@@ -69,7 +70,7 @@ export class ReactFocusOn extends Component<ReactFocusOnProps> {
 
   private onClick = (event: MouseEvent) => {
     const {shards = [], onClickOutside} = this.props;
-    if (event.defaultPrevented) {
+    if (event.defaultPrevented || event.target === this.lastEventTarget) {
       return;
     }
     if (
