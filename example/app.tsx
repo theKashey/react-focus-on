@@ -43,7 +43,7 @@ export default class App extends Component <{}, AppState> {
               <GHCorner openInNewTab href={repoUrl}/>
               <button>outside</button>
               outside
-
+              <button onClick={()=>alert('ok')}>test outside event</button>
               <button onClick={toggle} ref={this.toggleRef}>toggle drop</button>
               <button onClick={toggle}>toggle drop 2</button>
               {on && <div style={{backgroundColor: '#EEE'}}>
@@ -54,6 +54,8 @@ export default class App extends Component <{}, AppState> {
                   shards={[this.toggleRef, this.scrollRef]}
                 >
                   Holala!!
+                  <button onClick={()=>alert('ok')}>test inside event</button>
+                  <a href="http://github.com">link</a>
                   <button onClick={toggle}>close</button>
                   <ScrollBox>innerbox</ScrollBox>
                 </FocusOn>
