@@ -8648,19 +8648,20 @@ react-powerplug@^1.0.0:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-react-remove-scroll-bar@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-1.1.3.tgz#21eb49a0cc9628746d2b624880fb272a3541866a"
-  integrity sha512-mEPbImnGIxv+PyVTpeuGhWVl2aAQgSpB2yX4lL6ttsjT/XVVZwyPiz4gnCxBPoWYniQBLTL1IjZ/rrQLT9ZIJg==
+react-remove-scroll-bar@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-1.1.5.tgz#f129cf159163f27da72e87a046882768dd31fa89"
+  integrity sha512-h2484atf4ayDOQS0rnw6UwWpwEX6abV+fC7ClMOpdNmbE9K0XTcj7YrknSOaP5h9prWT/uhUK7XZbV/17gTJdw==
   dependencies:
     react-style-singleton "^1.1.0"
+    tslib "^1.0.0"
 
-react-remove-scroll@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-1.0.5.tgz#d34d2c799a079ab19a0a2625dd2165e46824ee29"
-  integrity sha512-FXFyYZCU5zxcYf+CVx+4MTRmOXkCcOFgF636GhO/aTIi2wZConpdI327mc1Iozzfq2l7Nh04m2a9lOu7BtjQiQ==
+react-remove-scroll@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-1.0.8.tgz#a5aadc56368345a51ba524582c842a773849f609"
+  integrity sha512-AS6gFBO6T2CP0TgmDjq3Ip0Fz1HKyv+lzNrQAkJBSWGyOYaMWLMDy77mQJ7qEyy6fK0pI+Cz5x3X81/ux6SBew==
   dependencies:
-    react-remove-scroll-bar "^1.1.3"
+    react-remove-scroll-bar "^1.1.5"
     tslib "^1.0.0"
 
 react-style-singleton@^1.1.0:
