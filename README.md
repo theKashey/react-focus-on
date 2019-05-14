@@ -4,7 +4,7 @@
 
 The final solution for WAI ARIA compatible Modal Dialogs or any full-screen tasks:
 - locks __focus__ inside. Using [react-focus-lock](https://github.com/theKashey/react-focus-lock)
-- disabled page __scroll__ and user interactions. Using [react-scroll-locky](https://github.com/theKashey/react-scroll-locky)
+- disabled page __scroll__ and user interactions. Using [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
 - hides rest of a page from screen-readers. Using [aria-hidden](https://github.com/theKashey/aria-hidden)
 
 Now you could __focus on__ a single task.
@@ -36,7 +36,6 @@ import {FocusOn} from 'react-focus-on';
  - `[onDeactivation]` - on deactivation callback
  - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
  - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
- - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
  - `[noIsolation]` - disables pointer event isolation
  - `[shards]` - a list of Refs to be considered as a part of locks.
  
@@ -52,9 +51,9 @@ See [react-focus-lock](https://github.com/theKashey/react-focus-lock) for detail
  - `classNames.fullWidth` - "100%" width (will not change on scrollbar removal)
  - `classNames.zeroRight` - "0" right (will not change on scrollbar removal)
   
-See [React-Remove-Scroll](https://github.com/theKashey/react-remove-scroll) for details.
+See [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) for details.
 
-> PS: Version 1 used React-scroll-locky which was replaced by remove-scroll.  
+> PS: Version 1 used react-scroll-locky which was replaced by react-remove-scroll.  
   
 # Licence
  MIT
