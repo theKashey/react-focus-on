@@ -33,6 +33,8 @@ Works on any browser and any platform. Roughly `5kb`, excluding babel-runtime an
 
 > This is basically `inert` 
 
+Minimal size - __no more than 2kb__, maximal - no more that 6kb.
+
 ## Example
 Code sandbox example - https://codesandbox.io/s/p3vjp8mzw7
 ```js
