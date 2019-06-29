@@ -8,6 +8,7 @@ export interface CommonProps {
   onDeactivation?: () => void;
 
   noIsolation?: boolean;
+  inert?: boolean;
 
   shards?: Array<React.RefObject<any> | HTMLElement>;
 }
