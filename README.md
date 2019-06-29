@@ -1,6 +1,26 @@
-👁 React-Focus-On 
-=======
-[![NPM version](https://img.shields.io/npm/v/react-focus-on.svg)](https://www.npmjs.com/package/react-focus-on)
+<div align="center">
+  <h1>👁 React-Focus-On </h1>
+  <br/>
+   lock and loaded!
+  <br/>
+  
+  <a href="https://www.npmjs.com/package/react-focus-on">
+    <img src="https://img.shields.io/npm/v/react-focus-on.svg?style=flat-square" />
+  </a>
+    
+  <a href="https://travis-ci.org/theKashey/react-focus-on">
+   <img src="https://img.shields.io/travis/theKashey/react-focus-onl.svg?style=flat-square" alt="Build status">
+  </a> 
+
+  <a href="https://www.npmjs.com/package/react-focus-on">
+   <img src="https://img.shields.io/npm/dm/react-focus-on.svg" alt="npm downloads">
+  </a> 
+
+  <a href="https://bundlephobia.com/result?p=react-focus-on">
+   <img src="https://img.shields.io/bundlephobia/minzip/react-focus-on.svg" alt="bundle size">
+  </a>   
+  <br/>
+</div>
 
 The final solution for WAI ARIA compatible Modal Dialogs or any full-screen tasks:
 - locks __focus__ inside. Using [react-focus-lock](https://github.com/theKashey/react-focus-lock)
@@ -87,6 +107,10 @@ const FocusOnSidecar = sidecar(
  {content}
 </FocusOn> 
 ```
+
+# React versions
+- v1 and v2 might work with React 15/16
+- v3 require React 16.8+ (hooks)
 
 # Licence
  MIT
