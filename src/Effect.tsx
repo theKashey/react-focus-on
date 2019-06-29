@@ -43,6 +43,7 @@ export function Effect(
         return;
       }
       if (
+        shards &&
         shards
           .map(extractRef)
           .some(node => node && node.contains(event.target as any) || node === event.target)

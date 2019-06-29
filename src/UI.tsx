@@ -8,7 +8,7 @@ import {EffectProps, ReactFocusOnSideProps} from "./types";
 import {effectCar} from "./medium";
 
 export function FocusOn(props: ReactFocusOnSideProps) {
-  const [lockProps, setLockProps] = React.useState(null);
+  const [lockProps, setLockProps] = React.useState({});
 
   const {children, autoFocus, shards, enabled = true, scrollLock = true, focusLock = true, sideCar, ...rest} = props;
 
@@ -16,7 +16,7 @@ export function FocusOn(props: ReactFocusOnSideProps) {
   return (
     <>
       <RemoveScroll
-        sideCar={enabled && sideCar}
+        sideCar={sideCar}
         enabled={enabled && scrollLock}
         shards={shards}
       >
@@ -27,7 +27,7 @@ export function FocusOn(props: ReactFocusOnSideProps) {
           shards={shards}
         />}
         <ReactFocusLock
-          sideCar={enabled && sideCar}
+          sideCar={sideCar}
           disabled={!(lockProps && enabled && focusLock)}
 
           returnFocus
