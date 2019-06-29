@@ -15,32 +15,48 @@
     "static": "ts-react-toolbox publish",
     "format": "ts-react-toolbox format",
     "analyze": "ts-react-toolbox analyze",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "size": "npx size-limit",
+    "link:rfl": "rsync -av ../react-focus-lock node_modules/ --exclude node_modules --exclude .git",
+    "link:rf": "rsync -av ../react-remove-scroll node_modules/ --exclude node_modules --exclude .git",
+    "link:sb": "rsync -av ../react-remove-scroll-bar node_modules/ --exclude node_modules --exclude .git",
+    "link:fl": "rsync -av ../focus-lock node_modules/ --exclude node_modules --exclude .git",
+    "link:ss": "rsync -av ../react-remove-scroll-bar/node_modules/react-style-singleton node_modules/ --exclude node_modules --exclude .git",
+    "link:all": "yarn link:fl & yarn link:rfl & yarn link:ss & yarn link:rf & yarn link:sb"
   },
+  "sideEffects": [
+    "**/sidecar.js"
+  ],
   "author": "Anton Korzunov <thekashey@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/react": "^16.8.19",
     "conventional-changelog-cli": "^2.0.12",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-powerplug": "^1.0.0",
-    "size-limit": "^0.21.1",
-    "ts-react-toolbox": "^0.1.22"
+    "ts-react-toolbox": "^0.2.2"
   },
   "dependencies": {
     "aria-hidden": "^1.1.1",
-    "react-focus-lock": "^1.18.2",
-    "react-remove-scroll": "^1.0.8"
+    "react-focus-lock": "^2.0.1",
+    "react-remove-scroll": "^2.0.1",
+    "react-style-singleton": "^2.0.0",
+    "use-sidecar": "^1.0.1"
   },
   "engines": {
     "node": ">=8.5.0"
   },
   "peerDependencies": {
-    "react": "^16.3.0"
+    "react": "^16.8.0"
   },
   "jsnext:main": "dist/es2015/index.js",
   "module": "dist/es2015/index.js",
   "types": "dist/es5/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "UI",
+    "sidecar"
   ],
   "keywords": [
     "react",
@@ -49,5 +65,8 @@
     "scroll",
     "isolation"
   ],
+  "resolutions": {
+    "typescript": "^3.0.0"
+  },
   "homepage": "https://github.com/theKashey/react-focus-on#readme"
 }

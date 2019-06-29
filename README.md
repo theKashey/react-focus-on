@@ -1,6 +1,26 @@
-👁 React-Focus-On 
-=======
-[![NPM version](https://img.shields.io/npm/v/react-focus-on.svg)](https://www.npmjs.com/package/react-focus-on)
+<div align="center">
+  <h1>👁 React-Focus-On </h1>
+  <br/>
+   lock and loaded!
+  <br/>
+  
+  <a href="https://www.npmjs.com/package/react-focus-on">
+    <img src="https://img.shields.io/npm/v/react-focus-on.svg?style=flat-square" />
+  </a>
+    
+  <a href="https://travis-ci.org/theKashey/react-focus-on">
+   <img src="https://img.shields.io/travis/theKashey/react-focus-onl.svg?style=flat-square" alt="Build status">
+  </a> 
+
+  <a href="https://www.npmjs.com/package/react-focus-on">
+   <img src="https://img.shields.io/npm/dm/react-focus-on.svg" alt="npm downloads">
+  </a> 
+
+  <a href="https://bundlephobia.com/result?p=react-focus-on">
+   <img src="https://img.shields.io/bundlephobia/minzip/react-focus-on.svg" alt="bundle size">
+  </a>   
+  <br/>
+</div>
 
 The final solution for WAI ARIA compatible Modal Dialogs or any full-screen tasks:
 - locks __focus__ inside. Using [react-focus-lock](https://github.com/theKashey/react-focus-lock)
@@ -36,7 +56,9 @@ import {FocusOn} from 'react-focus-on';
  - `[onDeactivation]` - on deactivation callback
  - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
  - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
- - `[noIsolation]` - disables pointer event isolation
+ - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
+ - `[noIsolation]` - disables aria-hidden isolation
+ - `[inert]` - enables pointer-events isolation (☠️ dangerous, use to disable "parent scrollbars", refer to [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) documentation)
  - `[shards]` - a list of Refs to be considered as a part of locks.
  
 ## Additional API
@@ -53,8 +75,43 @@ See [react-focus-lock](https://github.com/theKashey/react-focus-lock) for detail
   
 See [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) for details.
 
-> PS: Version 1 used react-scroll-locky which was replaced by react-remove-scroll.  
+> PS: Version 1 used React-scroll-locky which was replaced by remove-scroll.
+
+# Size
+- (🧩 full) 5.7kb after compression (excluding tslib).
+---
+- (👁 UI) __2kb__, visual elements only
+- (🚗 sidecar) 4kb, side effects  
   
+### Import full
+```js
+import {FocusOn} from 'react-focus-on';
+
+<FocusOn>
+ {content}
+</FocusOn> 
+```  
+
+### Import UI only
+```js
+import {FocusOn} from 'react-focus-on/UI';
+import {sidecar} from "use-sidecar";
+
+const FocusOnSidecar = sidecar(  
+  () => import(/* webpackPrefetch: true */ "react-focus-on/sidecar")
+);
+
+<FocusOn
+    sideCar={FocusOnSidecar}
+>
+ {content}
+</FocusOn> 
+```
+
+# React versions
+- v1 and v2 might work with React 15/16
+- v3 require React 16.8+ (hooks)
+
 # Licence
  MIT
   
