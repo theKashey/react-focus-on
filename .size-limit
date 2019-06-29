@@ -1,7 +1,17 @@
 [
   {
     path: "dist/es2015/index.js",
-    limit: "7 KB",
-    ignore: ["prop-types", "react-dom", "tslib"]
+    ignore: ["react-dom", "tslib", "use-sidecar"],
+    limit: "6 KB"
+  },
+  {
+    path: "dist/es2015/sidecar.js",
+    ignore: ["react-dom", "tslib", "use-sidecar"],
+    limit: "5 KB"
+  },
+  {
+    path: "dist/es2015/UI.js",
+    ignore: ["react-dom", "tslib", "use-sidecar"],
+    limit: "2 KB"
   }
 ]

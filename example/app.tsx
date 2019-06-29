@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {Component} from 'react';
-import {GHCorner} from 'react-gh-corner';
 import {Toggle} from 'react-powerplug';
-import {AppWrapper} from './styled';
-import {FocusOn, AutoFocusInside, MoveFocusInside, InFocusGuard, classNames} from "../src";
+import {FocusOn, MoveFocusInside, InFocusGuard, classNames} from "../src";
 
 export interface AppState {
   enabled: boolean;
@@ -38,9 +36,8 @@ export default class App extends Component <{}, AppState> {
     return (
       <Toggle>
         {({on, toggle}) => (
-          <AppWrapper>
+          <div>
             <FocusPane>
-              <GHCorner openInNewTab href={repoUrl}/>
               <button>outside</button>
               outside
               <button onClick={()=>alert('ok')}>test outside event</button>
@@ -89,7 +86,7 @@ export default class App extends Component <{}, AppState> {
                 )
               }
             </FocusPane>
-          </AppWrapper>
+          </div>
         )}
       </Toggle>
     )
