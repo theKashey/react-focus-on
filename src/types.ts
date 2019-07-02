@@ -1,5 +1,13 @@
 import * as React from "react";
 
+export interface LockProps {
+  onClick?(e: React.MouseEvent): void;
+
+  onActivation?(node: HTMLElement): void;
+
+  onDeactivation?(): void;
+}
+
 export interface CommonProps {
   onEscapeKey?: (event: Event) => void;
   onClickOutside?: () => void;
@@ -28,5 +36,5 @@ export interface ReactFocusOnSideProps extends ReactFocusOnProps {
 }
 
 export interface EffectProps extends CommonProps {
-  setLockProps(settings: object): void;
+  setLockProps(settings: LockProps): void;
 }
