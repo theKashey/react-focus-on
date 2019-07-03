@@ -7838,10 +7838,10 @@ react-remove-scroll-bar@^2.0.0:
     react-style-singleton "^2.0.0"
     tslib "^1.0.0"
 
-react-remove-scroll@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.0.3.tgz#a119311835d2bbe1f0bf6ad7822d238da148a411"
-  integrity sha512-8+CWdDudmRryw/OMuDEOqngzlZZWy0HG5rO7MjELELxbmZ9wV0CynEMgLnVGlVLws9RNsCL2YmAUTYk8rO3gPg==
+react-remove-scroll@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.0.4.tgz#0f8677dbda3bfdd4471e753873c2457a8b721d12"
+  integrity sha512-Y1MTCsePsXF2H32qJ5RtZQJRkNycys2E7SPljDza4NwLeYFZAosjazz94D3J9KE7X37yOAJM0AbUq1BFmc+gjA==
   dependencies:
     react-remove-scroll-bar "^2.0.0"
     react-style-singleton "^2.0.0"
