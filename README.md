@@ -9,7 +9,7 @@
   </a>
     
   <a href="https://travis-ci.org/theKashey/react-focus-on">
-   <img src="https://img.shields.io/travis/theKashey/react-focus-onl.svg?style=flat-square" alt="Build status">
+   <img src="https://img.shields.io/travis/theKashey/react-focus-on.svg?style=flat-square" alt="Build status">
   </a> 
 
   <a href="https://www.npmjs.com/package/react-focus-on">
