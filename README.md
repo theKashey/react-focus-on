@@ -52,21 +52,17 @@ import {FocusOn} from 'react-focus-on';
 `FocusOn` - the focus on component
  - `enabled` - controls behaviour
  - `[shards]` - a list of Refs to be considered as a part of the Lock. A way to properly handle portals or scattered lock.
-
-  
+--- 
  - `[autoFocus=true]` - enables or disables `auto focus` management (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
  - `[returnFocus=true]` - enables or disables `return focus` on lock deactivation (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
-
-
+---
  - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
  - `[noIsolation]` - disables aria-hidden isolation
  - `[inert]` - enables pointer-events isolation (☠️ dangerous, use to disable "parent scrollbars", refer to [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) documentation)
-
- 
+---
  - `[onActivation]` - on activation callback
  - `[onDeactivation]` - on deactivation callback
-
- 
+---
  - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
  - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
  
