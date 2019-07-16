@@ -23,17 +23,15 @@
 </div>
 
 The final solution for WAI ARIA compatible Modal Dialogs or any full-screen tasks:
-- locks __focus__ inside. Using [react-focus-lock](https://github.com/theKashey/react-focus-lock)
-- disabled page __scroll__ and user interactions. Using [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
-- hides rest of a page from screen-readers. Using [aria-hidden](https://github.com/theKashey/aria-hidden)
+- locks __focus__ inside using [react-focus-lock](https://github.com/theKashey/react-focus-lock)
+- disables page __scroll__ and user interactions using [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
+- hides rest of a page from screen-readers using [aria-hidden](https://github.com/theKashey/aria-hidden)
 
 Now you could __focus on__ a single task.
 
-Works on any browser and any platform. Roughly `5kb`, excluding babel-runtime and tslib, shared with other libraries.
+> This is basically the `inert` 
 
-> This is basically `inert` 
-
-Minimal size - __no more than 2kb__, maximal - no more that 6kb.
+_Minimal_ size - __no more than 2kb__, _maximal_ - no more that 6kb. See sidecar example for details.
 
 ## Example
 Code sandbox example - https://codesandbox.io/s/p3vjp8mzw7
@@ -53,23 +51,32 @@ import {FocusOn} from 'react-focus-on';
 ### FocusOn
 `FocusOn` - the focus on component
  - `enabled` - controls behaviour
- - `[autoFocus]` - enables of disabled auto focus management (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
- - `[onActivation]` - on activation callback
- - `[onDeactivation]` - on deactivation callback
- - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
- - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
+ - `[shards]` - a list of Refs to be considered as a part of the Lock. A way to properly handle portals or scattered lock.
+
+  
+ - `[autoFocus=true]` - enables or disables `auto focus` management (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
+ - `[returnFocus=true]` - enables or disables `return focus` on lock deactivation (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
+
+
  - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
  - `[noIsolation]` - disables aria-hidden isolation
  - `[inert]` - enables pointer-events isolation (☠️ dangerous, use to disable "parent scrollbars", refer to [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) documentation)
- - `[shards]` - a list of Refs to be considered as a part of locks.
+
+ 
+ - `[onActivation]` - on activation callback
+ - `[onDeactivation]` - on deactivation callback
+
+ 
+ - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
+ - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
  
 ## Additional API
 ### Exposed from React-Focus-Lock
  - `AutoFocusInside` - to mark autofocusable element
- - `MoveFocusInside` - to move focus inside or a component mount
- - `InFocusGuard` - to "guard" shard node.
+ - `MoveFocusInside` - to move focus inside a component on mount
+ - `InFocusGuard` - to "guard" a shard node (place an invisible node before and after)
  
-See [react-focus-lock](https://github.com/theKashey/react-focus-lock) for details.
+See [react-focus-lock](https://github.com/theKashey/react-focus-lock) documentation for details.
  
 ### Exposed from React-Remove-Scroll
  - `classNames.fullWidth` - "100%" width (will not change on scrollbar removal)
