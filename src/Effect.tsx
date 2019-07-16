@@ -32,8 +32,7 @@ export function Effect(
       if (event.defaultPrevented) {
         return;
       }
-      const code = event.key || event.keyCode;
-      if ((event.code === 'Escape' || code === 'Escape' || code === 27) && onEscapeKey) {
+      if ((event.code === 'Escape' || event.key === 'Escape' || event.keyCode === 27) && onEscapeKey) {
         onEscapeKey(event);
       }
     };
