@@ -3,6 +3,8 @@ import * as React from "react";
 export interface LockProps {
   onClick?(e: React.MouseEvent): void;
 
+  onTouchStart?(e: React.TouchEvent): void;
+
   onActivation?(node: HTMLElement): void;
 
   onDeactivation?(): void;
