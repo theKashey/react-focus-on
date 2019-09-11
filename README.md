@@ -64,7 +64,7 @@ import {FocusOn} from 'react-focus-on';
  - `[onDeactivation]` - on deactivation callback
 ---
  - `[onClickOutside]` - on click outside of "focus" area. (actually on any event "outside")
- - `[onEscapeKey]` - on Esc key pressed (and not defaultPrevented)
+ - `[onEscapeKey]` - on Esc key down (and not defaultPrevented)
  
 ## Additional API
 ### Exposed from React-Focus-Lock

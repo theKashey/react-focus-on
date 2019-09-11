@@ -28,7 +28,7 @@ export function Effect(
     };
     let lastEventTarget: EventTarget;
 
-    const onKeyPress = (event: KeyboardEvent) => {
+    const onKeyDown = (event: KeyboardEvent) => {
       if (event.defaultPrevented) {
         return;
       }
@@ -63,7 +63,7 @@ export function Effect(
       if (onActivation) {
         onActivation(node);
       }
-      document.addEventListener('keyup', onKeyPress);
+      document.addEventListener('keydown', onKeyDown);
       document.addEventListener('click', onClick);
       document.addEventListener('touchend', onClick);
     };
@@ -73,7 +73,7 @@ export function Effect(
       if (onDeactivation) {
         onDeactivation();
       }
-      document.removeEventListener('keyup', onKeyPress);
+      document.removeEventListener('keydown', onKeyDown);
       document.removeEventListener('click', onClick);
       document.removeEventListener('touchend', onClick);
     };
