@@ -29,7 +29,7 @@ export interface ReactFocusOnProps extends CommonProps {
   focusLock?: boolean;
 
   autoFocus?: boolean;
-  returnFocus?: boolean;
+  returnFocus?: boolean | FocusOptions;
 
   children: React.ReactNode;
 }

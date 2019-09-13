@@ -3945,7 +3945,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-focus-lock@^0.6.4:
+focus-lock@^0.6.5:
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.6.5.tgz#f6eb37832a9b1b205406175f5277396a28c0fce1"
   integrity sha512-i/mVBOoa9o+tl+u9owOJUF8k8L85odZNIsctB+JAK2HFT8jckiBwmk+3uydlm6FN8czgnkIwQtBv6yyAbrzXjw==
@@ -7770,10 +7770,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-clientside-effect@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-clientside-effect/-/react-clientside-effect-1.2.1.tgz#feb81abe9531061d4987941c15a00f2b3d0b6071"
-  integrity sha512-foSwZatJak6r+F4OqJ8a+MOWcBi3jwa7/RPdJIDZI1Ck0dn/FJZkkFu7YK+SiZxsCZIrotolxHSobcnBHgIjfw==
+react-clientside-effect@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-clientside-effect/-/react-clientside-effect-1.2.2.tgz#6212fb0e07b204e714581dd51992603d1accc837"
+  integrity sha512-nRmoyxeok5PBO6ytPvSjKp9xwXg9xagoTK1mMjwnQxqM9Hd7MNPl+LS1bOSOe+CV2+4fnEquc7H/S8QD3q697A==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -7797,15 +7797,15 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-focus-lock@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.0.3.tgz#53e989f62a1158ed97958bed84e472dbfc25cb57"
-  integrity sha512-cb500lLcCOpJkCoIz9HRj2hrGASLmd0pqe6KXva7urXGgJfD/kgOqkcI5Wl82KIrbGB5BPWw9KMs48Hvm7abOw==
+react-focus-lock@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.1.0.tgz#afe5c8c01109641ffc81bd150f3f2ff7d7411902"
+  integrity sha512-+9SIClb2CNmpr2rMeWXMDGbXCXSL+R+nU5MLdjMK8FRQRqwjBUhAR2+AFALURFQ4crHsvwQbGbCrVb5JCiWkHA==
   dependencies:
     "@babel/runtime" "^7.0.0"
-    focus-lock "^0.6.4"
+    focus-lock "^0.6.5"
     prop-types "^15.6.2"
-    react-clientside-effect "^1.2.1"
+    react-clientside-effect "^1.2.2"
     use-sidecar "^1.0.1"
 
 react-gh-corner@^1.1.2:
