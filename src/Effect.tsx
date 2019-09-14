@@ -5,6 +5,7 @@ import {hideOthers} from 'aria-hidden';
 import {InteractivityDisabler} from "./InteractivityDisabler";
 import {EffectProps} from "./types";
 import {focusHiddenMarker} from "./medium";
+import {useEffect, useRef, useState} from "react";
 
 const extractRef = (ref: React.RefObject<any> | HTMLElement): HTMLElement => (
   ('current' in ref) ? ref.current : ref
@@ -22,12 +23,11 @@ export function Effect(
     onDeactivation,
     noIsolation
   }: EffectProps) {
-  React.useEffect(() => {
-    let _undo = () => {
-      return
-    };
-    let lastEventTarget: EventTarget;
+  const [activeNode, setActive] = useState<HTMLElement | null>(null);
 
+  const lastEventTarget = useRef<EventTarget>(null);
+
+  React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.defaultPrevented) {
         return;
@@ -38,7 +38,7 @@ export function Effect(
     };
 
     const onClick = (event: MouseEvent | TouchEvent) => {
-      if (event.defaultPrevented || event.target === lastEventTarget) {
+      if (event.defaultPrevented || event.target === lastEventTarget.current) {
         return;
       }
       if (
@@ -54,41 +54,59 @@ export function Effect(
       }
     };
 
+    if (activeNode) {
+      document.addEventListener('keydown', onKeyDown);
+      document.addEventListener('click', onClick);
+      document.addEventListener('touchend', onClick);
+
+      return () => {
+        document.removeEventListener('keydown', onKeyDown);
+        document.removeEventListener('click', onClick);
+        document.removeEventListener('touchend', onClick);
+      }
+    }
+  }, [activeNode, onClickOutside, onEscapeKey]);
+
+  useEffect(() => {
+    if (activeNode) {
+      if (onActivation) {
+        onActivation(activeNode);
+      }
+    } else {
+      if (onDeactivation) {
+        onDeactivation();
+      }
+    }
+  }, [activeNode]);
+
+  useEffect(() => {
+    let _undo = () => null;
+
     const onNodeActivation = (node: HTMLElement) => {
       _undo = hideOthers(
         [node, ...(shards || []).map(extractRef)],
         document.body,
         noIsolation ? undefined : focusHiddenMarker
       );
-      if (onActivation) {
-        onActivation(node);
-      }
-      document.addEventListener('keydown', onKeyDown);
-      document.addEventListener('click', onClick);
-      document.addEventListener('touchend', onClick);
+
+      setActive(node);
     };
 
     const onNodeDeactivation = () => {
       _undo();
-      if (onDeactivation) {
-        onDeactivation();
-      }
-      document.removeEventListener('keydown', onKeyDown);
-      document.removeEventListener('click', onClick);
-      document.removeEventListener('touchend', onClick);
+      setActive(null);
     };
 
     setLockProps({
       onClick: (e: React.MouseEvent) => {
-        lastEventTarget = e.target
+        lastEventTarget.current = e.target
       },
       onTouchEnd: (e: React.TouchEvent) => {
-        lastEventTarget = e.target
+        lastEventTarget.current = e.target
       },
       onActivation: onNodeActivation,
       onDeactivation: onNodeDeactivation,
     });
-
   }, []);
 
   return (
