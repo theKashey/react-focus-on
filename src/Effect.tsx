@@ -80,7 +80,7 @@ export function Effect(
   }, [activeNode]);
 
   useEffect(() => {
-    let _undo = () => null;
+    let _undo = (): any => null;
 
     const onNodeActivation = (node: HTMLElement) => {
       _undo = hideOthers(
