@@ -37,7 +37,7 @@ export function Effect(
       }
     };
 
-    const onClick = (event: MouseEvent | TouchEvent) => {
+    const onMouseDown = (event: MouseEvent | TouchEvent) => {
       if (event.defaultPrevented || event.target === lastEventTarget.current) {
         return;
       }
@@ -56,13 +56,13 @@ export function Effect(
 
     if (activeNode) {
       document.addEventListener('keydown', onKeyDown);
-      document.addEventListener('click', onClick);
-      document.addEventListener('touchend', onClick);
+      document.addEventListener('mousedown', onMouseDown);
+      document.addEventListener('touchstart', onMouseDown);
 
       return () => {
         document.removeEventListener('keydown', onKeyDown);
-        document.removeEventListener('click', onClick);
-        document.removeEventListener('touchend', onClick);
+        document.removeEventListener('mousedown', onMouseDown);
+        document.removeEventListener('touchstart', onMouseDown);
       }
     }
   }, [activeNode, onClickOutside, onEscapeKey]);
@@ -98,10 +98,10 @@ export function Effect(
     };
 
     setLockProps({
-      onClick: (e: React.MouseEvent) => {
+      onMouseDown: (e: React.MouseEvent) => {
         lastEventTarget.current = e.target
       },
-      onTouchEnd: (e: React.TouchEvent) => {
+      onTouchStart: (e: React.TouchEvent) => {
         lastEventTarget.current = e.target
       },
       onActivation: onNodeActivation,
