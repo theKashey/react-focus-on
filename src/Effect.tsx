@@ -29,11 +29,10 @@ export function Effect(
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.defaultPrevented) {
-        return;
-      }
-      if ((event.code === 'Escape' || event.key === 'Escape' || event.keyCode === 27) && onEscapeKey) {
-        onEscapeKey(event);
+      if (!event.defaultPrevented) {
+        if ((event.code === 'Escape' || event.key === 'Escape' || event.keyCode === 27) && onEscapeKey) {
+          onEscapeKey(event);
+        }
       }
     };
 
