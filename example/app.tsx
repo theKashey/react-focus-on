@@ -49,6 +49,8 @@ export default class App extends Component <{}, AppState> {
                   onClickOutside={toggle}
                   onEscapeKey={toggle}
                   shards={[this.toggleRef, this.scrollRef]}
+                  onActivation={() => console.log("activated")}
+                  onDeactivation={() => console.log("deactivated")}
                 >
                   Holala!!
                   <button onClick={()=>alert('ok')}>test inside event</button>

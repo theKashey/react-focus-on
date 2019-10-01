@@ -23,7 +23,7 @@ export function Effect(
     onDeactivation,
     noIsolation
   }: EffectProps) {
-  const [activeNode, setActive] = useState<HTMLElement | null>(null);
+  const [activeNode, setActive] = useState<HTMLElement | null | undefined>(undefined);
 
   const lastEventTarget = useRef<EventTarget>(null);
 
@@ -71,12 +71,13 @@ export function Effect(
       if (onActivation) {
         onActivation(activeNode);
       }
-    } else {
-      if (onDeactivation) {
-        onDeactivation();
+      return () => {
+        if (onDeactivation) {
+          onDeactivation();
+        }
       }
     }
-  }, [activeNode]);
+  }, [!!activeNode]);
 
   useEffect(() => {
     let _undo = (): any => null;
