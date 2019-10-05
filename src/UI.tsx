@@ -8,9 +8,9 @@ import {EffectProps, ReactFocusOnSideProps, LockProps} from "./types";
 import {effectCar} from "./medium";
 
 export function FocusOn(props: ReactFocusOnSideProps) {
-  const [lockProps, setLockProps] = React.useState<LockProps>({});
+  const [lockProps, setLockProps] = React.useState<LockProps>(false as any);
 
-  const {children, autoFocus, shards, enabled = true, scrollLock = true, focusLock = true, returnFocus=true, inert, sideCar, ...rest} = props;
+  const {children, autoFocus, shards, enabled = true, scrollLock = true, focusLock = true, returnFocus = true, inert, sideCar, ...rest} = props;
 
   const SideCar: SideCarComponent<EffectProps> = sideCar;
 

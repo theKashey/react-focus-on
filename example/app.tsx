@@ -32,6 +32,11 @@ export default class App extends Component <{}, AppState> {
 
   toggle = () => this.setState({enabled: !this.state.enabled});
 
+  componentDidMount() {
+    // document.addEventListener('focus', e => console.trace('f', e.target, e), true);
+    // document.addEventListener('blur', e => console.trace('b', e.target, e), true);
+  }
+
   render() {
     return (
       <Toggle>
@@ -40,20 +45,21 @@ export default class App extends Component <{}, AppState> {
             <FocusPane>
               <button>outside</button>
               outside
-              <button onClick={()=>alert('ok')}>test outside event</button>
+              <button onClick={() => alert('ok')}>test outside event</button>
               <button onClick={toggle} ref={this.toggleRef}>toggle drop</button>
               <button onClick={toggle}>toggle drop 2</button>
-              {on && <div style={{backgroundColor: '#EEE'}}>
+              {<div style={{backgroundColor: '#EEE'}}>
                 <FocusOn
+                  enabled={on}
                   scrollLock={true}
                   onClickOutside={toggle}
                   onEscapeKey={toggle}
-                  shards={[this.toggleRef, this.scrollRef]}
+                  shards={[this.scrollRef]}
                   onActivation={() => console.log("activated")}
                   onDeactivation={() => console.log("deactivated")}
                 >
-                  Holala!!
-                  <button onClick={()=>alert('ok')}>test inside event</button>
+                  Holala!! {on ? "on" : "off"}
+                  <button onClick={() => alert('ok')}>test inside event</button>
                   <a href="http://github.com">link</a>
                   <button onClick={toggle}>close</button>
                   <ScrollBox>innerbox</ScrollBox>
@@ -73,9 +79,9 @@ export default class App extends Component <{}, AppState> {
                 <button>inside</button>
 
                 <button onClick={this.toggle}>{this.state.enabled ? 'disable' : 'enable'}</button>
-                <MoveFocusInside key={`k-${this.state.enabled}`}>
-                  <button>inside</button>
-                </MoveFocusInside>
+                {/*<MoveFocusInside key={`k-${this.state.enabled}`}>*/}
+                {/*  <button>inside</button>*/}
+                {/*</MoveFocusInside>*/}
                 <button>inside</button>
               </FocusOn>
               <button>outside</button>

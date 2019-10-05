@@ -23,7 +23,7 @@ export function Effect(
     onDeactivation,
     noIsolation
   }: EffectProps) {
-  const [activeNode, setActive] = useState<HTMLElement | null | undefined>(undefined);
+  const [activeNode, setActiveNode] = useState<HTMLElement | null | undefined>(undefined);
 
   const lastEventTarget = useRef<EventTarget>(null);
 
@@ -54,6 +54,7 @@ export function Effect(
     };
 
     if (activeNode) {
+      console.log('handlers attached');
       document.addEventListener('keydown', onKeyDown);
       document.addEventListener('mousedown', onMouseDown);
       document.addEventListener('touchstart', onMouseDown);
@@ -63,6 +64,8 @@ export function Effect(
         document.removeEventListener('mousedown', onMouseDown);
         document.removeEventListener('touchstart', onMouseDown);
       }
+    } else {
+      console.log('node is not active', activeNode);
     }
   }, [activeNode, onClickOutside, onEscapeKey]);
 
@@ -81,20 +84,25 @@ export function Effect(
 
   useEffect(() => {
     let _undo = (): any => null;
+    let unmounted = false;
 
     const onNodeActivation = (node: HTMLElement) => {
+      console.log('node activated', node);
       _undo = hideOthers(
         [node, ...(shards || []).map(extractRef)],
         document.body,
         noIsolation ? undefined : focusHiddenMarker
       );
 
-      setActive(node);
+      console.log('node set to', node, activeNode);
+      setActiveNode(() => node);
     };
 
     const onNodeDeactivation = () => {
       _undo();
-      setActive(null);
+      if (!unmounted) {
+        setActiveNode(null);
+      }
     };
 
     setLockProps({
@@ -107,6 +115,11 @@ export function Effect(
       onActivation: onNodeActivation,
       onDeactivation: onNodeDeactivation,
     });
+
+    return () => {
+      unmounted = true;
+      setLockProps(false as any);
+    }
   }, []);
 
   return (

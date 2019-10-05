@@ -7797,10 +7797,10 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-focus-lock@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.1.0.tgz#afe5c8c01109641ffc81bd150f3f2ff7d7411902"
-  integrity sha512-+9SIClb2CNmpr2rMeWXMDGbXCXSL+R+nU5MLdjMK8FRQRqwjBUhAR2+AFALURFQ4crHsvwQbGbCrVb5JCiWkHA==
+react-focus-lock@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.1.1.tgz#49762377119ecd52eb56519ddd10a87c0c1ddd98"
+  integrity sha512-IKfloS8Ifx5v+Gwm64hoTqT0NmzXksTKYROOAq+HlBIxUqUS2yA5NNzQJtuOsx3nyPs7wrgycbVsffRfcA5OTw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     focus-lock "^0.6.5"
