@@ -37,7 +37,7 @@ export function Effect(
     };
 
     const onMouseDown = (event: MouseEvent | TouchEvent) => {
-      if (event.defaultPrevented || event.target === lastEventTarget.current) {
+      if (event.defaultPrevented || event.target === lastEventTarget.current || (event instanceof MouseEvent && event.button !== 0)) {
         return;
       }
       if (
@@ -54,7 +54,6 @@ export function Effect(
     };
 
     if (activeNode) {
-      console.log('handlers attached');
       document.addEventListener('keydown', onKeyDown);
       document.addEventListener('mousedown', onMouseDown);
       document.addEventListener('touchstart', onMouseDown);
@@ -64,8 +63,6 @@ export function Effect(
         document.removeEventListener('mousedown', onMouseDown);
         document.removeEventListener('touchstart', onMouseDown);
       }
-    } else {
-      console.log('node is not active', activeNode);
     }
   }, [activeNode, onClickOutside, onEscapeKey]);
 
@@ -87,14 +84,12 @@ export function Effect(
     let unmounted = false;
 
     const onNodeActivation = (node: HTMLElement) => {
-      console.log('node activated', node);
       _undo = hideOthers(
         [node, ...(shards || []).map(extractRef)],
         document.body,
         noIsolation ? undefined : focusHiddenMarker
       );
 
-      console.log('node set to', node, activeNode);
       setActiveNode(() => node);
     };
 
