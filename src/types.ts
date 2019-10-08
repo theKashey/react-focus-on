@@ -1,43 +1,43 @@
-import * as React from "react";
+import * as React from 'react'
 
 export interface LockProps {
-  onMouseDown?(e: React.MouseEvent): void;
+	onMouseDown?(e: React.MouseEvent): void
 
-  onTouchStart?(e: React.TouchEvent): void;
+	onTouchStart?(e: React.TouchEvent): void
 
-  onActivation?(node: HTMLElement): void;
+	onActivation?(node: HTMLElement): void
 
-  onDeactivation?(): void;
+	onDeactivation?(): void
 }
 
 export interface CommonProps {
-  onEscapeKey?: (event: Event) => void;
-  onClickOutside?: () => void;
+	onEscapeKey?: (event: Event) => void
+	onClickOutside?: () => void
 
-  onActivation?: (node: HTMLElement) => void;
-  onDeactivation?: () => void;
+	onActivation?: (node: HTMLElement) => void
+	onDeactivation?: () => void
 
-  noIsolation?: boolean;
-  inert?: boolean;
+	noIsolation?: boolean
+	inert?: boolean
 
-  shards?: Array<React.RefObject<any> | HTMLElement>;
+	shards?: Array<React.RefObject<any> | HTMLElement>
 }
 
 export interface ReactFocusOnProps extends CommonProps {
-  enabled?: boolean;
-  scrollLock?: boolean;
-  focusLock?: boolean;
+	enabled?: boolean
+	scrollLock?: boolean
+	focusLock?: boolean
+	className?: string
+	autoFocus?: boolean
+	returnFocus?: boolean | FocusOptions
 
-  autoFocus?: boolean;
-  returnFocus?: boolean | FocusOptions;
-
-  children: React.ReactNode;
+	children: React.ReactNode
 }
 
 export interface ReactFocusOnSideProps extends ReactFocusOnProps {
-  sideCar: React.SFC<any>;
+	sideCar: React.SFC<any>
 }
 
 export interface EffectProps extends CommonProps {
-  setLockProps(settings: LockProps): void;
+	setLockProps(settings: LockProps): void
 }
