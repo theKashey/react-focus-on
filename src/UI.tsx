@@ -7,10 +7,10 @@ import ReactFocusLock from 'react-focus-lock/UI'
 import {EffectProps, ReactFocusOnSideProps, LockProps} from "./types";
 import {effectCar} from "./medium";
 
-export function FocusOn(props: ReactFocusOnSideProps) {
+export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>((props, parentRef) => {
   const [lockProps, setLockProps] = React.useState<LockProps>(false as any);
 
-  const {children, autoFocus, shards, enabled = true, scrollLock = true, focusLock = true, returnFocus = true, inert, sideCar, ...rest} = props;
+  const {children, autoFocus, shards, enabled = true, scrollLock = true, focusLock = true, returnFocus = true, inert, sideCar, className, ...rest} = props;
 
   const SideCar: SideCarComponent<EffectProps> = sideCar;
 
@@ -18,36 +18,41 @@ export function FocusOn(props: ReactFocusOnSideProps) {
 
   return (
     <>
-      <RemoveScroll
+      <ReactFocusLock
+        ref={parentRef}
+
         sideCar={sideCar}
-        enabled={enabled && scrollLock}
+        disabled={!(lockProps && enabled && focusLock)}
+
+        returnFocus={returnFocus}
+        autoFocus={autoFocus}
+
         shards={shards}
-        inert={inert}
+
+        onActivation={onActivation}
+        onDeactivation={onDeactivation}
+
+        className={className}
+
+        as={RemoveScroll}
+        lockProps={{
+          ...restProps,
+          sideCar,
+          shards,
+          inert,
+          enabled: enabled && scrollLock,
+        }}
       >
-        {enabled && <SideCar
-          {...rest}
-          sideCar={effectCar}
-          setLockProps={setLockProps}
-          shards={shards}
-        />}
-        <ReactFocusLock
-          sideCar={sideCar}
-          disabled={!(lockProps && enabled && focusLock)}
-
-          returnFocus={returnFocus}
-          autoFocus={autoFocus}
-
-          shards={shards}
-
-          lockProps={restProps}
-          onActivation={onActivation}
-          onDeactivation={onDeactivation}
-        >
-          {children}
-        </ReactFocusLock>
-      </RemoveScroll>
+        {children}
+      </ReactFocusLock>
+      {enabled && <SideCar
+        {...rest}
+        sideCar={effectCar}
+        setLockProps={setLockProps}
+        shards={shards}
+      />}
     </>
   );
-}
+})
 
 export * from './reExports';

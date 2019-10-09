@@ -7,11 +7,10 @@ const RequireSideCar = (props: any) => {
   return <SideCar {...props} />;
 };
 
-export function FocusOn(props: ReactFocusOnProps) {
-  return (
-    <ReactFocusOn
-      {...props}
-      sideCar={RequireSideCar}
-    />
-  );
-}
+export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnProps>((props, ref) => (
+  <ReactFocusOn
+    {...props}
+    ref={ref}
+    sideCar={RequireSideCar}
+  />
+));
