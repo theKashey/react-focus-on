@@ -12,7 +12,7 @@ export interface LockProps {
 
 export interface CommonProps {
   onEscapeKey?: (event: Event) => void;
-  onClickOutside?: () => void;
+  onClickOutside?: (event: MouseEvent | TouchEvent) => void;
 
   onActivation?: (node: HTMLElement) => void;
   onDeactivation?: () => void;
