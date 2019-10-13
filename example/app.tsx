@@ -57,6 +57,8 @@ export default class App extends Component <{}, AppState> {
                   shards={[this.scrollRef]}
                   onActivation={() => console.log("activated")}
                   onDeactivation={() => console.log("deactivated")}
+
+                  className="test-class-name"
                 >
                   Holala!! {on ? "on" : "off"}
                   <button onClick={() => alert('ok')}>test inside event</button>

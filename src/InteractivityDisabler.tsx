@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {styleSingleton} from 'react-style-singleton';
-import {focusHiddenMarker} from "./medium";
+import { styleSingleton } from 'react-style-singleton';
+import { focusHiddenMarker } from './medium';
 
 const Style = styleSingleton();
 
@@ -10,6 +10,4 @@ const styles = `
  }
 `;
 
-export const InteractivityDisabler: React.SFC = () => (
-  <Style styles={styles}/>
-);
+export const InteractivityDisabler: React.SFC = () => <Style styles={styles} />;

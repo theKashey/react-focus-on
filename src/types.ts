@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 export interface LockProps {
   onMouseDown?(e: React.MouseEvent): void;
@@ -31,6 +31,7 @@ export interface ReactFocusOnProps extends CommonProps {
   autoFocus?: boolean;
   returnFocus?: boolean | FocusOptions;
 
+  className?: string;
   children: React.ReactNode;
 }
 
