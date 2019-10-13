@@ -8584,15 +8584,16 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-focus-lock@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.1.1.tgz#49762377119ecd52eb56519ddd10a87c0c1ddd98"
-  integrity sha512-IKfloS8Ifx5v+Gwm64hoTqT0NmzXksTKYROOAq+HlBIxUqUS2yA5NNzQJtuOsx3nyPs7wrgycbVsffRfcA5OTw==
+react-focus-lock@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.2.0.tgz#8eb17dfb4c51e1b0a514bd0d4555208e46715deb"
+  integrity sha512-0Km5cKst2pQJqaE1ctNzkSH/ev9sw7Xl24OfY3U9PhVb4/d9F9qwWsiRd9KQ5lOSKeUpLlp/NP8l+FE+LM/e0A==
   dependencies:
     "@babel/runtime" "^7.0.0"
     focus-lock "^0.6.5"
     prop-types "^15.6.2"
     react-clientside-effect "^1.2.2"
+    use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
 react-gh-corner@^1.1.2:
@@ -8630,14 +8631,15 @@ react-remove-scroll-bar@^2.0.0:
     react-style-singleton "^2.0.0"
     tslib "^1.0.0"
 
-react-remove-scroll@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.0.4.tgz#0f8677dbda3bfdd4471e753873c2457a8b721d12"
-  integrity sha512-Y1MTCsePsXF2H32qJ5RtZQJRkNycys2E7SPljDza4NwLeYFZAosjazz94D3J9KE7X37yOAJM0AbUq1BFmc+gjA==
+react-remove-scroll@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.1.1.tgz#8149d91bbc507ba06495cc9e18edb4c799a6654c"
+  integrity sha512-5FE6/hUw8ajzRpbeJDQ2XXQ1+u5ox6JBLNl6T8o5cBJ64i4KARgxyToJnm8g4EptjBKnoQQwUYkHzxCOZWbynw==
   dependencies:
     react-remove-scroll-bar "^2.0.0"
     react-style-singleton "^2.0.0"
     tslib "^1.0.0"
+    use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
 react-style-singleton@^2.0.0:
