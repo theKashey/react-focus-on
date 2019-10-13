@@ -63,7 +63,7 @@ export function Effect({
           return;
         }
         if (onClickOutside) {
-          onClickOutside();
+          onClickOutside(event);
         }
       };
 
