@@ -1,2 +1,2 @@
-export {FocusOn} from './Combination';
+export { FocusOn } from './Combination';
 export * from './reExports';

@@ -37,14 +37,14 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-powerplug": "^1.0.0",
-    "ts-react-toolbox": "^0.2.2"
+    "ts-react-toolbox": "^0.2.10"
   },
   "dependencies": {
     "aria-hidden": "^1.1.1",
     "react-focus-lock": "^2.1.1",
     "react-remove-scroll": "^2.0.4",
     "react-style-singleton": "^2.0.0",
-    "use-callback-ref": "^1.1.0",
+    "use-callback-ref": "^1.2.1",
     "use-sidecar": "^1.0.1"
   },
   "engines": {
