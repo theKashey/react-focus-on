@@ -1,6 +1,6 @@
 {
   "name": "react-focus-on",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "The final solution for WAI ARIA compatible modal dialogs or full-screen tasks.",
   "main": "dist/es5/index.js",
   "scripts": {
