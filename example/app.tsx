@@ -58,6 +58,8 @@ export default class App extends Component <{}, AppState> {
                   onActivation={() => console.log("activated")}
                   onDeactivation={() => console.log("deactivated")}
 
+                  allowPinchZoom={true}
+
                   className="test-class-name"
                 >
                   Holala!! {on ? "on" : "off"}

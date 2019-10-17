@@ -41,8 +41,8 @@
   },
   "dependencies": {
     "aria-hidden": "^1.1.1",
-    "react-focus-lock": "^2.2.0",
-    "react-remove-scroll": "^2.1.1",
+    "react-focus-lock": "^2.2.1",
+    "react-remove-scroll": "^2.2.0",
     "react-style-singleton": "^2.0.0",
     "use-callback-ref": "^1.2.1",
     "use-sidecar": "^1.0.1"

@@ -19,6 +19,7 @@ export interface CommonProps {
 
   noIsolation?: boolean;
   inert?: boolean;
+  allowPinchZoom?: boolean;
 
   shards?: Array<React.RefObject<any> | HTMLElement>;
 }

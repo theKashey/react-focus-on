@@ -59,6 +59,7 @@ import {FocusOn} from 'react-focus-on';
  - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
  - `[noIsolation]` - disables aria-hidden isolation
  - `[inert]` - enables pointer-events isolation (☠️ dangerous, use to disable "parent scrollbars", refer to [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) documentation)
+ - `[allowPinchZoom]` - enables "pinch-n-zoom" behavior. By default it might be prevented, refer to [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) documentation
 ---
  - `[onActivation]` - on activation callback
  - `[onDeactivation]` - on deactivation callback

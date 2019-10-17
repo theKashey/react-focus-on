@@ -26,6 +26,7 @@ export function Effect({
   );
 
   const lastEventTarget = useRef<EventTarget>(null);
+  const mouseTouches = useRef<number>(0);
 
   React.useEffect(
     () => {
@@ -67,15 +68,26 @@ export function Effect({
         }
       };
 
+      const onTouchStart = (event: TouchEvent) => {
+        onMouseDown(event);
+        mouseTouches.current = event.touches.length;
+      };
+
+      const onTouchEnd = (event: TouchEvent) => {
+        mouseTouches.current = event.touches.length;
+      };
+
       if (activeNode) {
         document.addEventListener('keydown', onKeyDown);
         document.addEventListener('mousedown', onMouseDown);
-        document.addEventListener('touchstart', onMouseDown);
+        document.addEventListener('touchstart', onTouchStart);
+        document.addEventListener('touchend', onTouchEnd);
 
         return () => {
           document.removeEventListener('keydown', onKeyDown);
           document.removeEventListener('mousedown', onMouseDown);
-          document.removeEventListener('touchstart', onMouseDown);
+          document.removeEventListener('touchstart', onTouchStart);
+          document.removeEventListener('touchend', onTouchEnd);
         };
       }
     },
