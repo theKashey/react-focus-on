@@ -42,16 +42,22 @@
   "dependencies": {
     "aria-hidden": "^1.1.1",
     "react-focus-lock": "^2.2.1",
-    "react-remove-scroll": "^2.2.0",
-    "react-style-singleton": "^2.0.0",
-    "use-callback-ref": "^1.2.1",
+    "react-remove-scroll": "^2.3.0",
+    "react-style-singleton": "^2.1.0",
+    "use-callback-ref": "^1.2.3",
     "use-sidecar": "^1.0.1"
   },
   "engines": {
     "node": ">=8.5.0"
   },
   "peerDependencies": {
+    "@types/react": "^16.8.0",
     "react": "^16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "jsnext:main": "dist/es2015/index.js",
   "module": "dist/es2015/index.js",
