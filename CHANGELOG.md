@@ -1,3 +1,12 @@
+## [3.4.1](https://github.com/theKashey/react-focus-on/compare/v3.4.0...v3.4.1) (2020-04-17)
+
+
+### Bug Fixes
+
+* update focus-lock, fixes [#35](https://github.com/theKashey/react-focus-on/issues/35) ([280d4a5](https://github.com/theKashey/react-focus-on/commit/280d4a5))
+
+
+
 # [3.4.0](https://github.com/theKashey/react-focus-on/compare/v3.3.0...v3.4.0) (2020-04-16)
 
 
