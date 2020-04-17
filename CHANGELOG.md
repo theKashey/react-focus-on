@@ -1,3 +1,12 @@
+# [3.4.0](https://github.com/theKashey/react-focus-on/compare/v3.3.0...v3.4.0) (2020-04-16)
+
+
+### Features
+
+* support CSP ([67739a4](https://github.com/theKashey/react-focus-on/commit/67739a4))
+
+
+
 # [3.3.0](https://github.com/theKashey/react-focus-on/compare/v3.2.0...v3.3.0) (2019-10-17)
 
 
