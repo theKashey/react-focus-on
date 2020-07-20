@@ -23,6 +23,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       allowPinchZoom,
       sideCar,
       className,
+      whiteList,
       ...rest
     } = props;
 
@@ -43,6 +44,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
           onDeactivation={onDeactivation}
           className={className}
           as={RemoveScroll}
+          whiteList={whiteList}
           lockProps={{
             ...restProps,
             sideCar,
