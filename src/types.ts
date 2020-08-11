@@ -34,8 +34,8 @@ export interface ReactFocusOnProps extends CommonProps {
 
   className?: string;
   children: React.ReactNode;
-
-  whiteList?: (activeElement: HTMLElement) => boolean;
+  shouldIgnore?: (candidate: HTMLElement) => boolean;
+  style?: React.CSSProperties
 }
 
 export interface ReactFocusOnSideProps extends ReactFocusOnProps {
