@@ -34,6 +34,7 @@ export interface ReactFocusOnProps extends CommonProps {
 
   className?: string;
   children: React.ReactNode;
+  style?: React.CSSProperties
 }
 
 export interface ReactFocusOnSideProps extends ReactFocusOnProps {

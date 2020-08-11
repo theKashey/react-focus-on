@@ -23,6 +23,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       allowPinchZoom,
       sideCar,
       className,
+      style,
       ...rest
     } = props;
 
@@ -49,7 +50,8 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
             shards,
             allowPinchZoom,
             inert,
-            enabled: enabled && scrollLock
+            style,
+            enabled: enabled && scrollLock,
           }}
         >
           {children}
