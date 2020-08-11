@@ -3,30 +3,38 @@ import {configure, mount} from 'enzyme';
 import {FocusOn} from '../src';
 import * as Adapter from 'enzyme-adapter-react-16';
 
-configure({ adapter: new Adapter() });
+configure({adapter: new Adapter()});
 
 const tick = () => new Promise(resolve => setTimeout(resolve, 10));
 
-describe('Endpoint UI', () => {
+describe('Endpoint Combination', () => {
   it('smoke', async () => {
     const onActivation = jest.fn();
     const onDeactivation = jest.fn();
 
-    const ref = React.createRef();
-    const wrapper = mount(
+    const TestTarget = ({enabled}) => (
       <div>
-        <FocusOn inert onActivation={onActivation} onDeactivation={onDeactivation}>content</FocusOn>
-        <div ref={ref}>outer</div>
+        <button autoFocus>button1</button>
+        <FocusOn enabled={enabled} inert onActivation={onActivation} onDeactivation={onDeactivation}>
+          content
+          <button>button2</button>
+        </FocusOn>
       </div>
     );
+
+    const wrapper = mount(<TestTarget enabled={false}/>);
     expect(wrapper.html()).toContain('content');
+    expect(document.activeElement.innerHTML).toBe('button1');
+    wrapper.setProps({enabled:true});
     expect(document.body.className).toBe('block-interactivity-0');
     await tick();
     expect(onActivation).toHaveBeenCalled();
-    expect(ref.current.outerHTML).toBe('<div>outer</div>');
+    expect(document.activeElement.innerHTML).toBe('button2');
 
     wrapper.unmount();
     expect(onDeactivation).toHaveBeenCalled();
     expect(document.body.className).toBe('');
+    await tick();
+    expect(document.activeElement.innerHTML).toBe('button1');
   });
 });
