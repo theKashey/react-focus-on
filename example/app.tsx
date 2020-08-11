@@ -61,6 +61,7 @@ export default class App extends Component <{}, AppState> {
                   allowPinchZoom={true}
 
                   className="test-class-name"
+                  style={{color: 'inherit'}}
                 >
                   Holala!! {on ? "on" : "off"}
                   <button onClick={() => alert('ok')}>test inside event</button>
