@@ -55,6 +55,7 @@ import {FocusOn} from 'react-focus-on';
 --- 
  - `[autoFocus=true]` - enables or disables `auto focus` management (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
  - `[returnFocus=true]` - enables or disables `return focus` on lock deactivation (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
+ - `[whiteList=fn]` - you could whitelist locations FocusLock should carry about. Everything outside it will ignore. For example - any modals (see [react-focus-lock documentation](https://github.com/theKashey/react-focus-lock))
 ---
  - `[gapMode]` - the way removed ScrollBar would be _compensated_ - margin(default), or padding. See [scroll-locky documentation](https://github.com/theKashey/react-scroll-locky#gap-modes) to find the one you need.
  - `[noIsolation]` - disables aria-hidden isolation

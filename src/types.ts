@@ -34,6 +34,7 @@ export interface ReactFocusOnProps extends CommonProps {
 
   className?: string;
   children: React.ReactNode;
+  shouldIgnore?: (candidate: HTMLElement) => boolean;
   style?: React.CSSProperties
 }
 
