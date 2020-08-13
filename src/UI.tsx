@@ -25,6 +25,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       className,
       shouldIgnore,
       style,
+      as,
       ...rest
     } = props;
 
@@ -51,6 +52,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
             sideCar,
             shards,
             allowPinchZoom,
+            as,
             inert,
             style,
             enabled: enabled && scrollLock,
