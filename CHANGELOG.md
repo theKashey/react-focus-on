@@ -1,3 +1,13 @@
+# [3.5.0](https://github.com/theKashey/react-focus-on/compare/v3.4.1...v3.5.0) (2020-08-13)
+
+
+### Features
+
+* add 'as' and 'style' props ([d1a79e4](https://github.com/theKashey/react-focus-on/commit/d1a79e4))
+* expose whitelist prop ([fa5fe87](https://github.com/theKashey/react-focus-on/commit/fa5fe87))
+
+
+
 ## [3.4.1](https://github.com/theKashey/react-focus-on/compare/v3.4.0...v3.4.1) (2020-04-17)
 
 
