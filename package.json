@@ -24,6 +24,10 @@
     "link:ss": "rsync -av ../react-remove-scroll-bar/node_modules/react-style-singleton node_modules/ --exclude node_modules --exclude .git",
     "link:all": "yarn link:fl & yarn link:rfl & yarn link:ss & yarn link:rf & yarn link:sb"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theKashey/react-focus-on.git"
+  },
   "sideEffects": [
     "**/sidecar.js"
   ],
