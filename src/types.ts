@@ -1,4 +1,6 @@
 import * as React from 'react';
+import ReactFocusLock from 'react-focus-lock/UI';
+import {ComponentProps} from "react";
 
 export interface LockProps {
   onMouseDown?(e: React.MouseEvent): void;
@@ -77,7 +79,7 @@ export interface ReactFocusOnProps extends CommonProps {
    * [focus-lock] control returnFocus
    * @default true
    */
-  returnFocus?: boolean | FocusOptions;
+  returnFocus?: ComponentProps<typeof ReactFocusLock>['returnFocus'];
 
   /**
    * [focus-lock] allows "ignoring" focus on some elements
