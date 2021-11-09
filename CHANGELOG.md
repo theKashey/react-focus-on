@@ -1,3 +1,12 @@
+## [3.5.3](https://github.com/theKashey/react-focus-on/compare/v3.5.2...v3.5.3) (2021-11-09)
+
+
+### Bug Fixes
+
+* add tslib as dependency, fixes [#54](https://github.com/theKashey/react-focus-on/issues/54) ([ce204cd](https://github.com/theKashey/react-focus-on/commit/ce204cd))
+
+
+
 ## [3.5.2](https://github.com/theKashey/react-focus-on/compare/v3.5.1...v3.5.2) (2021-03-28)
 
 
