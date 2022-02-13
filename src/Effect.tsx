@@ -115,12 +115,13 @@ export function Effect({
     let unmounted = false;
 
     const onNodeActivation = (node: HTMLElement) => {
-      _undo = hideOthers(
-        [node, ...(shards || []).map(extractRef)],
-        document.body,
-        noIsolation ? undefined : focusHiddenMarker
-      );
-
+      if (!noIsolation) {
+        _undo = hideOthers(
+          [node, ...(shards || []).map(extractRef)],
+          document.body,
+          focusHiddenMarker
+        );
+      }
       setActiveNode(() => node);
     };
 
