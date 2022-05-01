@@ -1,3 +1,12 @@
+# [3.6.0](https://github.com/theKashey/react-focus-on/compare/v3.5.4...v3.6.0) (2022-05-01)
+
+
+### Bug Fixes
+
+* update underlaying packages; brings React 18 and Shadow DOM support ([5bd7b5c](https://github.com/theKashey/react-focus-on/commit/5bd7b5c))
+
+
+
 ## [3.5.4](https://github.com/theKashey/react-focus-on/compare/v3.5.3...v3.5.4) (2021-11-09)
 
 
