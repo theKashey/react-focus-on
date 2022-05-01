@@ -10,4 +10,4 @@ const styles = `
  }
 `;
 
-export const InteractivityDisabler: React.SFC = () => <Style styles={styles} />;
+export const InteractivityDisabler: React.FC = () => <Style styles={styles} />;

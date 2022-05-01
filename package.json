@@ -34,7 +34,7 @@
   "author": "Anton Korzunov <thekashey@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^16.8.19",
+    "@types/react": "^18.0.8",
     "conventional-changelog-cli": "^2.0.12",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -45,12 +45,12 @@
   },
   "dependencies": {
     "aria-hidden": "^1.1.3",
-    "react-focus-lock": "^2.6.0",
-    "react-remove-scroll": "^2.4.1",
-    "react-style-singleton": "^2.1.1",
+    "react-focus-lock": "^2.9.0",
+    "react-remove-scroll": "^2.5.2",
+    "react-style-singleton": "^2.2.0",
     "tslib": "^2.3.1",
-    "use-callback-ref": "^1.2.5",
-    "use-sidecar": "^1.0.5"
+    "use-callback-ref": "^1.3.0",
+    "use-sidecar": "^1.1.2"
   },
   "engines": {
     "node": ">=8.5.0"
@@ -80,7 +80,7 @@
     "isolation"
   ],
   "resolutions": {
-    "typescript": "^3.0.0"
+    "typescript": "^3.8.0"
   },
   "homepage": "https://github.com/theKashey/react-focus-on#readme"
 }

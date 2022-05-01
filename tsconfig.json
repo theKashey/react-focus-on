@@ -22,8 +22,5 @@
       "es2015.promise"
     ],
     "jsx": "react"
-  },
-  "files": [
-    "./custom-typings/atlaskit.d.ts"
-  ]
+  }
 }

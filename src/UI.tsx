@@ -33,6 +33,17 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
 
     const { onActivation, onDeactivation, ...restProps } = lockProps;
 
+    const appliedLockProps = {
+        ...restProps,
+        sideCar,
+        shards,
+        allowPinchZoom,
+        as,
+        inert,
+        style,
+        enabled: enabled && scrollLock,
+    } as const;
+
     return (
       <>
         <ReactFocusLock
@@ -45,18 +56,9 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
           onActivation={onActivation}
           onDeactivation={onDeactivation}
           className={className}
-          as={RemoveScroll}
           whiteList={shouldIgnore}
-          lockProps={{
-            ...restProps,
-            sideCar,
-            shards,
-            allowPinchZoom,
-            as,
-            inert,
-            style,
-            enabled: enabled && scrollLock,
-          }}
+          lockProps={appliedLockProps}
+          as={RemoveScroll}
         >
           {children}
         </ReactFocusLock>

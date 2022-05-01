@@ -99,7 +99,7 @@ export interface ReactFocusOnProps extends CommonProps {
 }
 
 export interface ReactFocusOnSideProps extends ReactFocusOnProps {
-  sideCar: React.SFC<any>;
+  sideCar: React.FC<any>;
 }
 
 export interface EffectProps extends CommonProps {
