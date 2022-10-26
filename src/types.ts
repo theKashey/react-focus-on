@@ -80,7 +80,12 @@ export interface ReactFocusOnProps extends CommonProps {
    * @default true
    */
   returnFocus?: ComponentProps<typeof ReactFocusLock>['returnFocus'] | undefined;
-
+  /**
+   * [focus-lock] control focusOptions
+   * @default undefined
+   * @see {@link https://github.com/theKashey/react-focus-lock/issues/162}
+   */
+  focusOptions?: ComponentProps<typeof ReactFocusLock>['focusOptions'] | undefined;
   /**
    * [focus-lock] allows "ignoring" focus on some elements
    * @see {@link https://github.com/theKashey/react-focus-lock#api}

@@ -24,6 +24,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       sideCar,
       className,
       shouldIgnore,
+      focusOptions,
       style,
       as,
       ...rest
@@ -58,6 +59,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
           className={className}
           whiteList={shouldIgnore}
           lockProps={appliedLockProps}
+          focusOptions={focusOptions}
           as={RemoveScroll}
         >
           {children}
