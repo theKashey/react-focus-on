@@ -1,3 +1,14 @@
+# [3.7.0](https://github.com/theKashey/react-focus-on/compare/v3.6.0...v3.7.0) (2022-11-13)
+
+
+### Bug Fixes
+
+* update dependencies ([3f836ef](https://github.com/theKashey/react-focus-on/commit/3f836ef)). Support Shadow DOM in aria-hidden.
+
+### Features
+* introduce `preventScrollOnFocus` option ([#63](https://github.com/theKashey/react-focus-on/pull/63))
+
+
 # [3.6.0](https://github.com/theKashey/react-focus-on/compare/v3.5.4...v3.6.0) (2022-05-01)
 
 
