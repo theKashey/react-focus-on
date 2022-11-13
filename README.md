@@ -61,6 +61,7 @@ import {FocusOn} from 'react-focus-on';
  - `[noIsolation]` - disables aria-hidden isolation
  - `[inert]` - enables pointer-events isolation (☠️ dangerous, use to disable "parent scrollbars", refer to [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) documentation)
  - `[allowPinchZoom]` - enables "pinch-n-zoom" behavior. By default it might be prevented, refer to [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) documentation
+ - `[preventScrollOnFocus]` - prevents a [side effect of a programatic page scroll](https://github.com/theKashey/react-focus-on/issues/62) caused by focusing elements. Especially useful to address modal animations.
 ---
  - `[onActivation]` - on activation callback
  - `[onDeactivation]` - on deactivation callback

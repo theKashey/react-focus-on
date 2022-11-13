@@ -3,7 +3,6 @@ import {configure, mount} from 'enzyme';
 import {FocusOn} from '../src/UI';
 import {sidecar} from "use-sidecar";
 import * as Adapter from 'enzyme-adapter-react-16';
-import {RemoveScroll} from "../../react-remove-scroll/src/UI";
 
 configure({ adapter: new Adapter() });
 
