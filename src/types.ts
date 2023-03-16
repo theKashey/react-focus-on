@@ -2,6 +2,9 @@ import * as React from 'react';
 import ReactFocusLock from 'react-focus-lock/UI';
 import {ComponentProps} from "react";
 
+// TODO: reuse from react-remove-scroll-bar
+export type GapMode = 'padding' | 'margin';
+
 export interface LockProps {
   onMouseDown?: ((e: React.MouseEvent) => void) | undefined;
 
@@ -49,6 +52,12 @@ export interface CommonProps {
    * @see https://github.com/theKashey/react-remove-scroll#usage
    */
   allowPinchZoom?: boolean | undefined;
+  /**
+   * [scroll-lock] Controls how body scroll removal is supported. Possible values - `margin` or `padding`
+   * @default 'margin'
+   * @see https://github.com/theKashey/react-remove-scroll-bar#gapmode
+   */
+  gapMode?: GapMode;
 
   /**
    * a list of elements which should be considered as a part of the lock
