@@ -1,3 +1,12 @@
+# [3.8.0](https://github.com/theKashey/react-focus-on/compare/v3.7.0...v3.8.0) (2023-03-16)
+
+
+### Bug Fixes
+
+* wire up gapMode, fixes [#65](https://github.com/theKashey/react-focus-on/issues/65) ([455fda9](https://github.com/theKashey/react-focus-on/commit/455fda9))
+
+
+
 # [3.7.0](https://github.com/theKashey/react-focus-on/compare/v3.6.0...v3.7.0) (2022-11-13)
 
 
