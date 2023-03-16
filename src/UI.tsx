@@ -27,6 +27,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       preventScrollOnFocus,
       style,
       as,
+      gapMode,
       ...rest
     } = props;
 
@@ -36,12 +37,18 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
 
     const appliedLockProps = {
         ...restProps,
-        sideCar,
-        shards,
-        allowPinchZoom,
+
         as,
-        inert,
         style,
+
+        sideCar,
+
+        shards,
+
+        allowPinchZoom,
+        gapMode,
+        inert,
+
         enabled: enabled && scrollLock,
     } as const;
 
