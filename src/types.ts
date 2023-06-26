@@ -95,6 +95,11 @@ export interface ReactFocusOnProps extends CommonProps {
    */
   preventScrollOnFocus?: boolean | undefined;
   /**
+   * [focus-lock] enables aggressive focus capturing within iframes
+   * @default true
+   */
+  crossFrame?: boolean | undefined;
+  /**
    * [focus-lock] allows "ignoring" focus on some elements
    * @see {@link https://github.com/theKashey/react-focus-lock#api}
    */
