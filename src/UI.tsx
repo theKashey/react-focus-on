@@ -15,6 +15,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       children,
       autoFocus,
       shards,
+      crossFrame,
       enabled = true,
       scrollLock = true,
       focusLock = true,
@@ -61,6 +62,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
           returnFocus={returnFocus}
           autoFocus={autoFocus}
           shards={shards}
+          crossFrame={crossFrame}
           onActivation={onActivation}
           onDeactivation={onDeactivation}
           className={className}
