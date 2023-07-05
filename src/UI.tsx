@@ -32,25 +32,33 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       ...rest
     } = props;
 
+    // Don't let focusOptions object change reference on each render.
+    // It causes react-clientside-effect to call handleStateChangeOnClient
+    // and change focus to first focusable element inside the trap.
+    const focusOptions = React.useMemo(
+      () => (preventScrollOnFocus ? { preventScroll: true } : undefined),
+      [preventScrollOnFocus]
+    );
+
     const SideCar: SideCarComponent<EffectProps> = sideCar;
 
     const { onActivation, onDeactivation, ...restProps } = lockProps;
 
     const appliedLockProps = {
-        ...restProps,
+      ...restProps,
 
-        as,
-        style,
+      as,
+      style,
 
-        sideCar,
+      sideCar,
 
-        shards,
+      shards,
 
-        allowPinchZoom,
-        gapMode,
-        inert,
+      allowPinchZoom,
+      gapMode,
+      inert,
 
-        enabled: enabled && scrollLock,
+      enabled: enabled && scrollLock
     } as const;
 
     return (
@@ -68,7 +76,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
           className={className}
           whiteList={shouldIgnore}
           lockProps={appliedLockProps}
-          focusOptions={preventScrollOnFocus ? { preventScroll: true } : undefined}
+          focusOptions={focusOptions}
           as={RemoveScroll}
         >
           {children}
