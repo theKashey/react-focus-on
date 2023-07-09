@@ -7,6 +7,8 @@ import ReactFocusLock from 'react-focus-lock/UI';
 import { EffectProps, ReactFocusOnSideProps, LockProps } from './types';
 import { effectCar } from './medium';
 
+const PREVENT_SCROLL = { preventScroll: true };
+
 export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
   (props, parentRef) => {
     const [lockProps, setLockProps] = React.useState<LockProps>(false as any);
@@ -31,14 +33,6 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       gapMode,
       ...rest
     } = props;
-
-    // Don't let focusOptions object change reference on each render.
-    // It causes react-clientside-effect to call handleStateChangeOnClient
-    // and change focus to first focusable element inside the trap.
-    const focusOptions = React.useMemo(
-      () => (preventScrollOnFocus ? { preventScroll: true } : undefined),
-      [preventScrollOnFocus]
-    );
 
     const SideCar: SideCarComponent<EffectProps> = sideCar;
 
@@ -76,7 +70,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
           className={className}
           whiteList={shouldIgnore}
           lockProps={appliedLockProps}
-          focusOptions={focusOptions}
+          focusOptions={preventScrollOnFocus ? PREVENT_SCROLL : undefined}
           as={RemoveScroll}
         >
           {children}
