@@ -1,3 +1,13 @@
+## [3.9.1](https://github.com/theKashey/react-focus-on/compare/v3.9.0...v3.9.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* memoize focusOptions to prevent react-focus-lock Trap resetting focus ([ae360d7](https://github.com/theKashey/react-focus-on/commit/ae360d7))
+* prevent focus options shakes sideEffect ([458b61a](https://github.com/theKashey/react-focus-on/commit/458b61a))
+
+
+
 # [3.9.0](https://github.com/theKashey/react-focus-on/compare/v3.8.2...v3.9.0) (2023-07-05)
 
 
