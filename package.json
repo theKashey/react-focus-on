@@ -44,7 +44,7 @@
     "ts-react-toolbox": "^0.2.10"
   },
   "dependencies": {
-    "aria-hidden": "^1.2.2",
+    "aria-hidden": "^1.2.4",
     "react-focus-lock": "^2.11.3",
     "react-remove-scroll": "^2.5.7",
     "react-style-singleton": "^2.2.1",
