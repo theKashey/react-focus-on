@@ -78,16 +78,16 @@ export function Effect({
       };
 
       if (activeNode) {
-        document.addEventListener('keydown', onKeyDown);
-        document.addEventListener('mousedown', onMouseDown);
-        document.addEventListener('touchstart', onTouchStart);
-        document.addEventListener('touchend', onTouchEnd);
+        activeNode.ownerDocument.addEventListener('keydown', onKeyDown);
+        activeNode.ownerDocument.addEventListener('mousedown', onMouseDown);
+        activeNode.ownerDocument.addEventListener('touchstart', onTouchStart);
+        activeNode.ownerDocument.addEventListener('touchend', onTouchEnd);
 
         return () => {
-          document.removeEventListener('keydown', onKeyDown);
-          document.removeEventListener('mousedown', onMouseDown);
-          document.removeEventListener('touchstart', onTouchStart);
-          document.removeEventListener('touchend', onTouchEnd);
+          activeNode.ownerDocument.removeEventListener('keydown', onKeyDown);
+          activeNode.ownerDocument.removeEventListener('mousedown', onMouseDown);
+          activeNode.ownerDocument.removeEventListener('touchstart', onTouchStart);
+          activeNode.ownerDocument.removeEventListener('touchend', onTouchEnd);
         };
       }
     },
@@ -118,7 +118,7 @@ export function Effect({
       if (!noIsolation) {
         _undo = hideOthers(
           [node, ...(shards || []).map(extractRef)],
-          document.body,
+          node.ownerDocument.body,
           focusHiddenMarker
         );
       }
