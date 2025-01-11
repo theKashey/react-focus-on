@@ -8481,10 +8481,10 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-focus-lock@^2.11.3:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.13.0.tgz#e4dbfdbcdd31bf91d5b16263fe68c30d0fdc95a6"
-  integrity sha512-w7aIcTwZwNzUp2fYQDMICy+khFwVmKmOrLF8kNsPS+dz4Oi/oxoVJ2wCMVvX6rWGriM/+mYaTyp1MRmkcs2amw==
+react-focus-lock@^2.13.5:
+  version "2.13.5"
+  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.13.5.tgz#68b01618ef3a4717746a02e223afe9d86a69a95e"
+  integrity sha512-HjHuZFFk2+j6ZT3LDQpyqffue541HrxUG/OFchCEwis9nstgNg0rREVRAxHBcB1lHJ5Fsxtx1qya/5xFwxDb4g==
   dependencies:
     "@babel/runtime" "^7.0.0"
     focus-lock "^1.3.5"
