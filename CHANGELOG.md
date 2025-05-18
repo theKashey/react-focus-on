@@ -1,3 +1,7 @@
+## [3.9.4](https://github.com/theKashey/react-focus-on/compare/v3.9.3...v3.9.4) (2024-09-11)
+
+
+
 ## [3.9.3](https://github.com/theKashey/react-focus-on/compare/v3.9.2...v3.9.3) (2024-04-13)
 
 
