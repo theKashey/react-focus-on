@@ -1,3 +1,12 @@
+# [3.10.0](https://github.com/theKashey/react-focus-on/compare/v3.9.4...v3.10.0) (2025-05-18)
+
+
+### Features
+
+* Support react 19. Bump all dependencies ([b2b6c23](https://github.com/theKashey/react-focus-on/commit/b2b6c23))
+
+
+
 ## [3.9.4](https://github.com/theKashey/react-focus-on/compare/v3.9.3...v3.9.4) (2024-09-11)
 
 
