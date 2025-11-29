@@ -5,7 +5,13 @@ import { hideOthers } from 'aria-hidden';
 import { InteractivityDisabler } from './InteractivityDisabler';
 import { EffectProps } from './types';
 import { focusHiddenMarker } from './medium';
-import { useEffect, useRef, useState } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  useCallback,
+} from 'react';
 
 const extractRef = (ref: React.RefObject<any> | HTMLElement): HTMLElement =>
   'current' in ref ? ref.current : ref;
@@ -19,14 +25,24 @@ export function Effect({
 
   onActivation,
   onDeactivation,
-  noIsolation
+  noIsolation,
 }: EffectProps) {
   const [activeNode, setActiveNode] = useState<HTMLElement | null | undefined>(
     undefined
   );
 
-  const lastEventTarget = useRef<EventTarget>(null);
+  const lastEventTarget = useRef<EventTarget | null>(null);
   const mouseTouches = useRef<number>(0);
+
+  // Track if component is hydrated to prevent hydration errors
+  // Returns false during SSR/hydration, true after hydration
+  const isHydrated = useSyncExternalStore(
+    useCallback(() => () => {}, []),
+    () => true,
+    () => false
+  );
+
+  const pendingLockPropsRef = useRef<any>(null);
 
   React.useEffect(
     () => {
@@ -56,7 +72,7 @@ export function Effect({
           shards
             .map(extractRef)
             .some(
-              node =>
+              (node) =>
                 (node && node.contains(event.target as any)) ||
                 node === event.target
             )
@@ -85,11 +101,18 @@ export function Effect({
 
         return () => {
           activeNode.ownerDocument.removeEventListener('keydown', onKeyDown);
-          activeNode.ownerDocument.removeEventListener('mousedown', onMouseDown);
-          activeNode.ownerDocument.removeEventListener('touchstart', onTouchStart);
+          activeNode.ownerDocument.removeEventListener(
+            'mousedown',
+            onMouseDown
+          );
+          activeNode.ownerDocument.removeEventListener(
+            'touchstart',
+            onTouchStart
+          );
           activeNode.ownerDocument.removeEventListener('touchend', onTouchEnd);
         };
       }
+      return undefined;
     },
     [activeNode, onClickOutside, onEscapeKey]
   );
@@ -106,48 +129,74 @@ export function Effect({
           }
         };
       }
+      return undefined;
     },
     [!!activeNode]
   );
 
-  useEffect(() => {
-    let _undo = (): any => null;
-    let unmounted = false;
+  useEffect(
+    () => {
+      let _undo = (): any => null;
+      let unmounted = false;
 
-    const onNodeActivation = (node: HTMLElement) => {
-      if (!noIsolation) {
-        _undo = hideOthers(
-          [node, ...(shards || []).map(extractRef)],
-          node.ownerDocument.body,
-          focusHiddenMarker
-        );
+      const onNodeActivation = (node: HTMLElement) => {
+        if (!noIsolation) {
+          _undo = hideOthers(
+            [node, ...(shards || []).map(extractRef)],
+            node.ownerDocument.body,
+            focusHiddenMarker
+          );
+        }
+        setActiveNode(() => node);
+      };
+
+      const onNodeDeactivation = () => {
+        _undo();
+        if (!unmounted) {
+          setActiveNode(null);
+        }
+      };
+
+      const lockPropsValue = {
+        onMouseDown: (e: React.MouseEvent) => {
+          lastEventTarget.current = e.target;
+        },
+        onTouchStart: (e: React.TouchEvent) => {
+          lastEventTarget.current = e.target;
+        },
+        onActivation: onNodeActivation,
+        onDeactivation: onNodeDeactivation,
+      };
+
+      // Only call setLockProps after hydration is complete
+      if (isHydrated) {
+        setLockProps(lockPropsValue);
+      } else {
+        pendingLockPropsRef.current = lockPropsValue;
       }
-      setActiveNode(() => node);
-    };
 
-    const onNodeDeactivation = () => {
-      _undo();
-      if (!unmounted) {
-        setActiveNode(null);
+      return () => {
+        unmounted = true;
+        if (isHydrated) {
+          setLockProps(false as any);
+        } else {
+          pendingLockPropsRef.current = false as any;
+        }
+      };
+    },
+    [isHydrated]
+  );
+
+  // Apply pending lock props after hydration
+  useEffect(
+    () => {
+      if (isHydrated && pendingLockPropsRef.current !== null) {
+        setLockProps(pendingLockPropsRef.current);
+        pendingLockPropsRef.current = null;
       }
-    };
-
-    setLockProps({
-      onMouseDown: (e: React.MouseEvent) => {
-        lastEventTarget.current = e.target;
-      },
-      onTouchStart: (e: React.TouchEvent) => {
-        lastEventTarget.current = e.target;
-      },
-      onActivation: onNodeActivation,
-      onDeactivation: onNodeDeactivation
-    });
-
-    return () => {
-      unmounted = true;
-      setLockProps(false as any);
-    };
-  }, []);
+    },
+    [isHydrated]
+  );
 
   return <InteractivityDisabler />;
 }
