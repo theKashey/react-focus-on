@@ -3,26 +3,32 @@
   "version": "3.10.0",
   "description": "The final solution for WAI ARIA compatible modal dialogs or full-screen tasks.",
   "main": "dist/es5/index.js",
+  "module": "dist/es2015/index.js",
+  "types": "dist/es5/index.d.ts",
   "scripts": {
-    "test": "ts-react-toolbox test",
-    "bootstrap": "ts-react-toolbox init",
-    "dev": "ts-react-toolbox dev",
-    "test:ci": "ts-react-toolbox test --runInBand --coverage",
-    "build": "ts-react-toolbox build",
+    "test": "jest",
+    "dev": "lib-builder dev",
+    "test:ci": "jest --runInBand --coverage",
+    "build": "lib-builder build && yarn size:report",
     "prepublish": "yarn build && yarn changelog",
-    "release": "ts-react-toolbox release",
-    "lint": "ts-react-toolbox lint",
-    "static": "ts-react-toolbox publish",
-    "format": "ts-react-toolbox format",
-    "analyze": "ts-react-toolbox analyze",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "size": "npx size-limit",
+    "release": "yarn build && yarn test",
+    "lint": "lib-builder lint",
+    "format": "lib-builder format",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "size": "size-limit",
     "link:rfl": "rsync -av ../react-focus-lock node_modules/ --exclude node_modules --exclude .git",
     "link:rf": "rsync -av ../react-remove-scroll node_modules/ --exclude node_modules --exclude .git",
     "link:sb": "rsync -av ../react-remove-scroll-bar node_modules/ --exclude node_modules --exclude .git",
     "link:fl": "rsync -av ../focus-lock node_modules/ --exclude node_modules --exclude .git",
     "link:ss": "rsync -av ../react-remove-scroll-bar/node_modules/react-style-singleton node_modules/ --exclude node_modules --exclude .git",
-    "link:all": "yarn link:fl & yarn link:rfl & yarn link:ss & yarn link:rf & yarn link:sb"
+    "link:all": "yarn link:fl & yarn link:rfl & yarn link:ss & yarn link:rf & yarn link:sb",
+    "size:report": "size-limit --json > .size.json",
+    "update": "lib-builder update",
+    "prepack": "yarn build && yarn changelog",
+    "prepare": "husky install",
+    "changelog:rewrite": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -34,25 +40,27 @@
   "author": "Anton Korzunov <thekashey@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^11.2.0",
+    "@storybook/react-vite": "^10.1.2",
+    "@theuiteam/lib-builder": "^1.1.0",
     "@types/react": "^18.0.8",
     "conventional-changelog-cli": "^2.0.12",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-powerplug": "^1.0.0",
-    "ts-react-toolbox": "^0.2.10"
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "size-limit": "^11.2.0",
+    "storybook": "^10.1.2",
+    "vite": "^7.2.4"
   },
   "dependencies": {
     "aria-hidden": "^1.2.5",
-    "react-focus-lock": "^2.13.6",
-    "react-remove-scroll": "^2.6.3",
+    "react-focus-lock": "^2.13.7",
+    "react-remove-scroll": "^2.6.4",
     "react-style-singleton": "^2.2.3",
     "tslib": "^2.3.1",
     "use-sidecar": "^1.1.3"
   },
   "engines": {
-    "node": ">=8.5.0"
+    "node": ">=10"
   },
   "peerDependencies": {
     "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
@@ -63,9 +71,6 @@
       "optional": true
     }
   },
-  "jsnext:main": "dist/es2015/index.js",
-  "module": "dist/es2015/index.js",
-  "types": "dist/es5/index.d.ts",
   "files": [
     "dist",
     "UI",
@@ -78,9 +83,22 @@
     "scroll",
     "isolation"
   ],
-  "resolutions": {
-    "typescript": "^3.8.0"
-  },
   "homepage": "https://github.com/theKashey/react-focus-on#readme",
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@1.22.19",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{js,css,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  }
 }

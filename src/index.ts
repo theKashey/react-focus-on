@@ -1,2 +1,2 @@
-export { FocusOn } from './Combination';
-export * from './reExports';
+export { FocusOn } from './Combination.tsx';
+export * from './reExports.ts';

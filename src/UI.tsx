@@ -1,91 +1,93 @@
 import * as React from 'react';
-import { SideCarComponent } from 'use-sidecar';
-
-import { RemoveScroll } from 'react-remove-scroll/UI';
 import ReactFocusLock from 'react-focus-lock/UI';
+import { RemoveScroll } from 'react-remove-scroll/UI';
+import type { SideCarComponent } from 'use-sidecar';
 
-import { EffectProps, ReactFocusOnSideProps, LockProps } from './types';
-import { effectCar } from './medium';
+import { effectCar } from './medium.ts';
+import type { EffectProps, ReactFocusOnSideProps, LockProps } from './types.ts';
 
 const PREVENT_SCROLL = { preventScroll: true };
 
-export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
-  (props, parentRef) => {
-    const [lockProps, setLockProps] = React.useState<LockProps>(false as any);
+export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>((props, parentRef) => {
+  const [lockProps, setLockProps] = React.useState<LockProps>(false as any);
+  const [activeNode, setActiveNode] = React.useState<HTMLElement | null>(null);
 
-    const {
-      children,
-      autoFocus,
-      shards,
-      crossFrame,
-      enabled = true,
-      scrollLock = true,
-      focusLock = true,
-      returnFocus = true,
-      inert,
-      allowPinchZoom,
-      sideCar,
-      className,
-      shouldIgnore,
-      preventScrollOnFocus,
-      style,
-      as,
-      gapMode,
-      ...rest
-    } = props;
+  const {
+    children,
+    autoFocus,
+    shards,
+    crossFrame,
+    enabled = true,
+    scrollLock = true,
+    focusLock = true,
+    returnFocus = true,
+    inert,
+    allowPinchZoom,
+    sideCar,
+    className,
+    shouldIgnore,
+    preventScrollOnFocus,
+    style,
+    as,
+    gapMode,
+    ...rest
+  } = props;
 
-    const SideCar: SideCarComponent<EffectProps> = sideCar;
+  const SideCar: SideCarComponent<EffectProps> = sideCar;
 
-    const { onActivation, onDeactivation, ...restProps } = lockProps;
+  const restProps = lockProps;
 
-    const appliedLockProps = {
-      ...restProps,
+  const appliedLockProps = {
+    ...restProps,
 
-      as,
-      style,
+    as,
+    style,
 
-      sideCar,
+    sideCar,
 
-      shards,
+    shards,
 
-      allowPinchZoom,
-      gapMode,
-      inert,
+    allowPinchZoom,
+    gapMode,
+    inert,
 
-      enabled: enabled && scrollLock
-    } as const;
+    enabled: enabled && scrollLock,
+  } as const;
 
-    return (
-      <>
-        <ReactFocusLock
-          ref={parentRef}
-          sideCar={sideCar}
-          disabled={!(lockProps && enabled && focusLock)}
-          returnFocus={returnFocus}
-          autoFocus={autoFocus}
-          shards={shards}
-          crossFrame={crossFrame}
-          onActivation={onActivation}
-          onDeactivation={onDeactivation}
-          className={className}
-          whiteList={shouldIgnore}
-          lockProps={appliedLockProps}
-          focusOptions={preventScrollOnFocus ? PREVENT_SCROLL : undefined}
-          as={RemoveScroll}
-        >
-          {children}
-        </ReactFocusLock>
-        {enabled && (
-          <SideCar
-            {...rest}
-            sideCar={effectCar}
-            setLockProps={setLockProps}
-            shards={shards}
-          />
-        )}
-      </>
-    );
-  }
-);
+  const onActivation = React.useCallback((node: HTMLElement) => {
+    setActiveNode(node);
+  }, []);
 
-export * from './reExports';
+  const onDeactivation = React.useCallback(() => {
+    setActiveNode(null);
+  }, []);
+
+  return (
+    <>
+      {enabled ? (
+        <SideCar {...rest} sideCar={effectCar} setLockProps={setLockProps} shards={shards} activeNode={activeNode} />
+      ) : null}
+      <ReactFocusLock
+        ref={parentRef}
+        sideCar={sideCar}
+        disabled={!(enabled && focusLock)}
+        returnFocus={returnFocus}
+        autoFocus={autoFocus}
+        shards={shards}
+        crossFrame={crossFrame}
+        onActivation={onActivation}
+        onDeactivation={onDeactivation}
+        className={className}
+        whiteList={shouldIgnore}
+        lockProps={appliedLockProps}
+        focusOptions={preventScrollOnFocus ? PREVENT_SCROLL : undefined}
+        // @ts-expect-error TS2322 Property 'forwardProps' is missing
+        as={RemoveScroll}
+      >
+        {children}
+      </ReactFocusLock>
+    </>
+  );
+});
+
+export * from './reExports.ts';
