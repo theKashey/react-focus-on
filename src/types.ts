@@ -124,4 +124,5 @@ export interface ReactFocusOnSideProps extends ReactFocusOnProps {
 
 export interface EffectProps extends CommonProps {
   setLockProps(settings: LockProps): void;
+  activeNode: HTMLElement | null;
 }

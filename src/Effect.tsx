@@ -5,7 +5,7 @@ import { hideOthers } from 'aria-hidden';
 import { InteractivityDisabler } from './InteractivityDisabler';
 import { EffectProps } from './types';
 import { focusHiddenMarker } from './medium';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const extractRef = (ref: React.RefObject<any> | HTMLElement): HTMLElement =>
   'current' in ref ? ref.current : ref;
@@ -19,13 +19,10 @@ export function Effect({
 
   onActivation,
   onDeactivation,
-  noIsolation
+  noIsolation,
+  activeNode,
 }: EffectProps) {
-  const [activeNode, setActiveNode] = useState<HTMLElement | null | undefined>(
-    undefined
-  );
-
-  const lastEventTarget = useRef<EventTarget>(null);
+  const lastEventTarget = useRef<EventTarget | null>(null);
   const mouseTouches = useRef<number>(0);
 
   React.useEffect(
@@ -90,6 +87,7 @@ export function Effect({
           activeNode.ownerDocument.removeEventListener('touchend', onTouchEnd);
         };
       }
+      return;
     },
     [activeNode, onClickOutside, onEscapeKey]
   );
@@ -106,32 +104,24 @@ export function Effect({
           }
         };
       }
+      return;
     },
     [!!activeNode]
   );
 
   useEffect(() => {
-    let _undo = (): any => null;
-    let unmounted = false;
+    if (noIsolation || !activeNode) {
+      return;
+    }
 
-    const onNodeActivation = (node: HTMLElement) => {
-      if (!noIsolation) {
-        _undo = hideOthers(
-          [node, ...(shards || []).map(extractRef)],
-          node.ownerDocument.body,
-          focusHiddenMarker
-        );
-      }
-      setActiveNode(() => node);
-    };
+    return hideOthers(
+        [activeNode, ...(shards || []).map(extractRef)],
+        activeNode.ownerDocument.body,
+        focusHiddenMarker
+    );
+  }, [activeNode, noIsolation]);
 
-    const onNodeDeactivation = () => {
-      _undo();
-      if (!unmounted) {
-        setActiveNode(null);
-      }
-    };
-
+  useEffect(() => {
     setLockProps({
       onMouseDown: (e: React.MouseEvent) => {
         lastEventTarget.current = e.target;
@@ -139,12 +129,9 @@ export function Effect({
       onTouchStart: (e: React.TouchEvent) => {
         lastEventTarget.current = e.target;
       },
-      onActivation: onNodeActivation,
-      onDeactivation: onNodeDeactivation
     });
 
     return () => {
-      unmounted = true;
       setLockProps(false as any);
     };
   }, []);
