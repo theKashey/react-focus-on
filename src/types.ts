@@ -1,6 +1,6 @@
 import * as React from 'react';
+import type { ComponentProps } from 'react';
 import ReactFocusLock from 'react-focus-lock/UI';
-import {ComponentProps} from "react";
 
 // TODO: reuse from react-remove-scroll-bar
 export type GapMode = 'padding' | 'margin';
@@ -62,7 +62,7 @@ export interface CommonProps {
   /**
    * a list of elements which should be considered as a part of the lock
    */
-  shards?: (Array<React.RefObject<any> | HTMLElement>) | undefined;
+  shards?: Array<React.RefObject<any> | HTMLElement> | undefined;
 }
 
 export interface ReactFocusOnProps extends CommonProps {
@@ -124,4 +124,5 @@ export interface ReactFocusOnSideProps extends ReactFocusOnProps {
 
 export interface EffectProps extends CommonProps {
   setLockProps(settings: LockProps): void;
+  activeNode: HTMLElement | null | undefined;
 }

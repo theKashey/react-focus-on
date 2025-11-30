@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { styleSingleton } from 'react-style-singleton';
-import { focusHiddenMarker } from './medium';
+
+import { focusHiddenMarker } from './medium.ts';
 
 const Style = styleSingleton();
 

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "dist/es2015/index.js",
+    "passed": true,
+    "size": 11091,
+    "sizeLimit": 12000
+  },
+  {
+    "name": "dist/es2015/sidecar.js",
+    "passed": true,
+    "size": 8935,
+    "sizeLimit": 9000
+  },
+  {
+    "name": "dist/es2015/UI.js",
+    "passed": true,
+    "size": 3235,
+    "sizeLimit": 3300
+  }
+]
