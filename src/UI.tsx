@@ -12,6 +12,7 @@ const PREVENT_SCROLL = { preventScroll: true };
 export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
   (props, parentRef) => {
     const [lockProps, setLockProps] = React.useState<LockProps>(false as any);
+      const [activeNode, setActiveNode] = React.useState<HTMLElement | null>(null);
 
     const {
       children,
@@ -36,10 +37,8 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
 
     const SideCar: SideCarComponent<EffectProps> = sideCar;
 
-    const { onActivation, onDeactivation, ...restProps } = lockProps;
-
     const appliedLockProps = {
-      ...restProps,
+      ...lockProps,
 
       as,
       style,
@@ -55,12 +54,20 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
       enabled: enabled && scrollLock
     } as const;
 
+      const onActivation = React.useCallback((node: HTMLElement) => {
+          setActiveNode(node);
+      }, []);
+
+      const onDeactivation = React.useCallback(() => {
+          setActiveNode(null);
+      }, []);
+
     return (
       <>
         <ReactFocusLock
           ref={parentRef}
           sideCar={sideCar}
-          disabled={!(lockProps && enabled && focusLock)}
+          disabled={!(enabled && focusLock)}
           returnFocus={returnFocus}
           autoFocus={autoFocus}
           shards={shards}
@@ -71,6 +78,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
           whiteList={shouldIgnore}
           lockProps={appliedLockProps}
           focusOptions={preventScrollOnFocus ? PREVENT_SCROLL : undefined}
+          // // ts-expect-error TS2322 - ts v3 "glitch"
           as={RemoveScroll}
         >
           {children}
@@ -81,6 +89,7 @@ export const FocusOn = React.forwardRef<HTMLElement, ReactFocusOnSideProps>(
             sideCar={effectCar}
             setLockProps={setLockProps}
             shards={shards}
+            activeNode={activeNode}
           />
         )}
       </>
