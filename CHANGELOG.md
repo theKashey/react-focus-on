@@ -1,3 +1,12 @@
+## [3.10.1](https://github.com/theKashey/react-focus-on/compare/v3.10.0...v3.10.1) (2025-11-30)
+
+
+### Bug Fixes
+
+* correct SSR for 'default-enabled' locks ([3568707](https://github.com/theKashey/react-focus-on/commit/3568707))
+
+
+
 # [3.10.0](https://github.com/theKashey/react-focus-on/compare/v3.9.4...v3.10.0) (2025-05-18)
 
 
