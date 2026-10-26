@@ -89,7 +89,7 @@ export function Effect({
       }
       return;
     },
-    [activeNode, onClickOutside, onEscapeKey]
+    [activeNode, onClickOutside, onEscapeKey, shards]
   );
 
   useEffect(
@@ -119,7 +119,7 @@ export function Effect({
         activeNode.ownerDocument.body,
         focusHiddenMarker
     );
-  }, [activeNode, noIsolation]);
+  }, [activeNode, noIsolation, shards]);
 
   useEffect(() => {
     setLockProps({
